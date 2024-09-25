@@ -1,0 +1,92 @@
+#signBox {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+#logo {
+  font-style:italic;
+  font-weight: 800;
+  font-family: sans-serif;
+  font-size: x-large;
+  color: red;
+}
+
+#sign {
+  background-color: red;
+  font-size: medium;
+  font-family: sans-serif;
+  font-weight: 400;
+  height: 30px;
+  width: 100px;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+#sign:hover {
+  border: 2px solid white;
+  color: white;
+}
+
+#head {
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 200px 240px 240px 240px 300px 200px;
+  justify-content: space-between;
+  align-items: center;
+}
+#homeBody
+{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+li {
+  list-style: none;
+}
+
+
+z
+
+.header {
+  width: 100px;
+}
+
+#box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+@keyframes pop
+{
+  from {
+    opacity: 0;
+    transform: translateZ(-50px);
+  }
+  to
+  {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+.pop
+{
+  animation: pop 3s ease-in forwards;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-top {
+  animation: slideInFromTop 1s ease-in forwards;
+}

@@ -1,0 +1,74 @@
+#SignUpBody
+{
+  display: grid;
+  grid-template-columns: 40% 60%;
+
+}
+#leftImg
+{
+  height: 100vh;
+  width: 100%;
+
+}
+#right
+{
+  height: 100vh;
+  background-color: rgb(17 24 39 );
+  color: rgb(235, 232, 232);
+}
+#SignUpBox
+{
+ position: relative;
+ margin-left: 8vw;
+ height: 70vh;
+ margin-top: 22vh;
+ display: flex;
+ flex-direction: column;
+
+
+}
+.inputSign
+{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+#inputContainers
+{
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+.lineSignup
+{
+  display: flex;
+  gap: 30px;
+}
+
+.inputBoxSign
+{
+  padding: 15px;
+  background-color: rgb(17 24 39 );
+
+  border: 2px solid rgb(46, 46, 93);
+  border-radius: 10px;
+}
+
+.inputBoxSign{
+  color: white;
+}
+.labelSignUp
+{
+  color: white;
+
+}
+.labelSignUp:only-child
+{
+   width: 700px
+}
+
+.inputBoxSign
+{
+  width: 300px;
+}

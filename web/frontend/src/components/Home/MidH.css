@@ -1,0 +1,14 @@
+#bodyMid
+{
+  display: flex;
+  margin-top: 8vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#headMid
+{
+  font-size: 32px;
+  font-weight: bolder;
+  font-family: sans-serif;
+}

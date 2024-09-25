@@ -1,0 +1,137 @@
+#tbody {
+  margin-top: 0px;
+  display: flex;
+  left: 5%;
+  flex-direction: column;
+  margin-left: 6%;
+  height: 100%;
+}
+#navTop
+{
+  margin-top: 5vh;
+  margin-left: 3vw;
+  margin-bottom: 7vh;
+}
+#contentsTop {
+  margin-left: 2.6vw;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  position: relative; /* Ensure relative positioning for absolute children */
+}
+
+.top {
+  font-size: 54px;
+  font-family: sans-serif;
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+
+.bottom {
+  margin-top: 0;
+  font-size: 57px;
+  color: hsl(0, 100%, 50%);
+  margin-bottom: 10px;
+  font-family: sans-serif;
+  font-weight: bolder;
+}
+
+#rightContentTop {
+  position: relative; 
+  overflow-y: hidden;
+  width: 80vw;/* Ensure relative positioning for absolute children */
+  height: 40vh;
+}
+
+#carHome {
+  position: absolute;
+  top: -15vh;
+  right: 40px;
+  margin-bottom: 60px;
+  width: 100vw; /* Adjust width as needed */
+  max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+#slogan {
+  font-size: 20px;
+}
+
+#numbersTop {
+  display: grid;
+  font-size: 20px;
+  grid-template-columns: 100px 150px;
+  padding-left: 0;
+  padding-top: 30px;
+}
+
+#li-r-border {
+ 
+  border-right: 2px solid gray;
+}
+
+.widthTopNumbers {
+  margin-left: 30px;
+}
+
+/* Animation keyframes */
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-top {
+  animation: slideInFromTop 1s ease-in forwards;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-bottom {
+  animation: slideInFromBottom 1s ease-in-out forwards;
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px); /* Start from 50px to the right */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0); /* Move to the original position */
+  }
+}
+
+.slide-in-right {
+  animation: slideInFromRight 1s ease-in forwards;
+}
+
+
+#leftContentTop
+{
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.bigNum
+{
+  font-size: xx-large;
+  font-weight: bolder;
+  font-family: sans-serif;
+  padding-bottom: 10px;
+}

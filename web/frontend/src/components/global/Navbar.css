@@ -1,0 +1,54 @@
+#head{
+
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px 200px 200px  ;
+  gap: 20px;
+ align-items: center; 
+}
+#logo
+{
+  color: #ff0000;
+  font-weight: 900;
+  font-family: monospace;
+  font-style: italic;
+  font-size: 25px;
+}
+.navi{
+  font-size: 20px;
+ 
+  text-decoration: none;
+  color:black;
+  font-weight: 500;
+  display: inline-block;
+  position: relative; /* Needed for positioning the pseudo-element */
+  padding-bottom: 5px;
+}
+
+.navi::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0; /* Initial width is 0 */
+  height: 2px; /* Height of the border */
+  background-color: black; /* Border color */
+  transition: width 0.5s ease; /* Transition effect */
+}
+
+.navi:hover::after {
+  width: 80px; /* Full width on hover */
+}
+
+#sign
+{
+  border-radius: 10px;
+  border: none;
+  background-color: #ff0000;
+  color: white;
+  font-weight: 400;
+  padding: 3px 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}

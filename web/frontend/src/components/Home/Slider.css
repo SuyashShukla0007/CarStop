@@ -1,0 +1,29 @@
+.logo-strip {
+  margin-top: 60px;
+  width: 10000000000000000000000000000%;
+  overflow: hidden;
+  background-color: #ffffff; /* Adjust background color as needed */
+  display: flex;
+ 
+  align-items: center;
+}
+
+.logo-strip-inner {
+  display: flex;
+  animation: scroll 60s linear infinite;
+}
+
+
+.logo {
+  height: 100px; /* Adjust height as needed */
+  flex-shrink: 0;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
