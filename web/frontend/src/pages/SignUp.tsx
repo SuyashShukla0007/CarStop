@@ -1,6 +1,6 @@
 import img1 from '../assets/aston.jpeg'
 import Cookies from 'js-cookie'
-import img2 from '../assets/porsche.jpg'
+import img2 from '../assets/mclaren.jpg'
 import { useNavigate } from 'react-router-dom'
 import img4 from '../assets/gtr.jpeg'
 // @ts-ignore
