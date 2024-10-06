@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from 'axios';
+import { useRef } from 'react';
 import img from '../../assets/0389e8dfd7ef480281a03d02d9ecf484.webp'
 interface BotProps {
   toggle: () => void;
@@ -16,7 +17,13 @@ const Bot: React.FC<BotProps> = ({ toggle }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false); // Loading state for bot response
-
+const lastmsg = useRef<HTMLDivElement>(null);
+  // Add a useEffect hook to scroll to the last message when messages change
+  useEffect(() => {
+    if (lastmsg.current) {
+      lastmsg.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
   const handleToggle = () => {
     setIsOpen(false);
     toggle();
@@ -91,6 +98,7 @@ const Bot: React.FC<BotProps> = ({ toggle }) => {
               </span>
             </div>
           ))}
+          <div ref={lastmsg}></div>
           {loading && <div className="text-center">Bot is typing...</div>}
         </div>
         <form onSubmit={handleSendMessage} className="flex px-4 py-2 bg-white border-t border-gray-300">
