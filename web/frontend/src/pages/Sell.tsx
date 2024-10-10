@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 export default function SellForm() {
+
+  const navi=useNavigate();
+
   const [formValues, setFormValues] = useState({
     owner: "",
     brand: "",
@@ -49,6 +53,9 @@ export default function SellForm() {
       } else {
         formData.append(key, value as string | Blob);
       }
+
+
+
     });
 
     try {
@@ -64,8 +71,10 @@ export default function SellForm() {
         throw new Error("Network response was not ok");
       }
 
-      ;
-      console.log("Success:", response);
+      navi('/')
+
+      
+      
     } catch (error) {
       console.error("Error:", error);
     }
@@ -73,8 +82,11 @@ export default function SellForm() {
 
   return (
     <div className="min-h-screen bg-gray-200 py-12 px-4 sm:px-6 lg:px-8">
+    
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+      
         <div className="px-4 py-5 sm:p-6">
+          
           <h2 className="text-2xl font-bold text-red mb-6">List Your Car</h2>
           <form
             action=""

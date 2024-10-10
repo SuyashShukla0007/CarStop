@@ -1,7 +1,10 @@
 const Comments = ({ comment }: any) => {
 
+   //remove first element from array
+  comment.shift()
   const reversedComments = [...comment].reverse()
-  
+ 
+
   return (
 
     
