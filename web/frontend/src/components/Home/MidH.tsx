@@ -1,4 +1,3 @@
-import React from 'react'
 import './MidH.css'
 import TopMid from '../Home/topMid'
 const MidH= () => {

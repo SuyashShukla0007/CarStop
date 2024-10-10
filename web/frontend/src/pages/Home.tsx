@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import TopH from '../components/Home/TopH';
 import MidH from '../components/Home/MidH';
 import LoadingSpinner from '../components/global/Loading'

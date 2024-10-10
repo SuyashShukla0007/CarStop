@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 import { CarDataType } from '../components/types/Car'
 import Card from '../components/global/Card'
 import Navbar from '../components/global/Navbar'

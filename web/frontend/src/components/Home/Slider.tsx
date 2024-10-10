@@ -1,5 +1,4 @@
 // Import necessary libraries
-import React from 'react';
 import './Slider.css';
 import logo1 from '../../assets/aston-martin-alt-svgrepo-com.svg'
 import logo2 from '../../assets/audi-svgrepo-com.svg'

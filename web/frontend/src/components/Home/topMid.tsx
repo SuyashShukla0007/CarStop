@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import Card from '../global/Card';
 import './topMid.css'
 import axios from 'axios';

@@ -1,12 +1,8 @@
-import React from 'react'
 import "./Card.css"
 import { NavLink } from 'react-router-dom'
 import mongoose from 'mongoose'
 
-interface rating{
-  stars:number,
-  comment:string
-}
+
 interface cardata {
   owner: string;
   brand: string;

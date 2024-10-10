@@ -1,8 +1,6 @@
 import Home from './pages/Home'
 import './App.css'
-import Navbar from './components/global/Navbar';
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import Cars from './pages/Cars';
 import Sign from './pages/SignUp';
 import Buy from './pages/Buy';

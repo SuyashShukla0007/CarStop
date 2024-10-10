@@ -1,4 +1,3 @@
-import img from '../../assets/redCar.jpg';
 import Features from './Features';
 import location from '../../assets/loc1.png';
 import Comments from './Comments';
