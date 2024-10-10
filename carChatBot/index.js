@@ -91,7 +91,7 @@ import cors from 'cors';
 import { GoogleGenerativeAI } from "@google/generative-ai"; // Ensure this package is installed
 import mongoose from 'mongoose';
 import Prompt from './models/prompt.js'; // Adjust the path to your model file
-
+import jwt from 'jsonwebtoken';
 const app = express();
 const PORT = 5000;
 
@@ -119,7 +119,13 @@ mongoose.connection.on('error', (err) => {
 
 app.post('/api/chat', async (req, res) => {
   try {
-    const { userId, message } = req.body;
+
+    const token=req.headers['authorization']
+
+    const user=jwt.verify(token, 'ca')
+    const userId=user.id
+
+    const {  message } = req.body;
 
     // Retrieve chat history from MongoDB
     const historyEntries = await Prompt.find({ userId }).sort({ timestamp: 1 });
@@ -143,7 +149,7 @@ app.post('/api/chat', async (req, res) => {
       },
       {
         role: "model",
-        parts: [{ text: "okay i would help you to find your dream car, by asking single line questions only " }],
+        parts: [{ text: "okay i would help you to find your dream car, by asking only single line five questions  " }],
       },
       {
         role: "user",
