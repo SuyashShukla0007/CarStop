@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useRef } from 'react';
+import Cookies from 'js-cookie';
 import img from '../../assets/0389e8dfd7ef480281a03d02d9ecf484.webp'
 interface BotProps {
   toggle: () => void;
@@ -49,7 +50,14 @@ const lastmsg = useRef<HTMLDivElement>(null);
 
       try {
         // Replace this URL with your actual API endpoint
-        const response = await axios.post('http://localhost:5000/api/chat', {userId:56436 ,message: input });
+        const token=Cookies.get('token');
+        const response = await axios.post('http://localhost:5000/api/chat', {message: input },
+          {
+            headers:{
+              'Authorization':token
+            }
+          }
+        );
 
         // Assuming the API returns an object with a 'response' property
         const botResponse: Message = {
@@ -92,13 +100,16 @@ const lastmsg = useRef<HTMLDivElement>(null);
         </div>
         <div className="overflow-y-auto h-[calc(100%-128px)] p-4" id="container"> {/* Adjusted height calculation */}
           {messages.map((message) => (
+            
             <div key={message.id} className={`my-2 ${message.sender === 'user' ? 'text-right' : 'text-left'}`}>
+              <div ref={lastmsg}></div>
               <span className={`inline-block px-3 py-2 rounded-lg ${message.sender === 'user' ? 'bg-red text-white' : 'bg-gray-200 text-black'}`}>
                 {message.text}
               </span>
+
             </div>
           ))}
-          <div ref={lastmsg}></div>
+          
           {loading && <div className="text-center">Bot is typing...</div>}
         </div>
         <form onSubmit={handleSendMessage} className="flex px-4 py-2 bg-white border-t border-gray-300">

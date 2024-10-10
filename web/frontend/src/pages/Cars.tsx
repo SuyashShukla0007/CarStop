@@ -46,8 +46,7 @@ const Cars = () => {
       const token = Cookies.get('token'); 
      
       const user = await axios.get("https://car-stop-ten.vercel.app/user/User",{
-        headers:{'Authorization':token},
-        withCredentials:true});
+        headers:{'Authorization':token}});
       console
       const postedBy = user.data.name;
       const ID = id?.split("=")[1];

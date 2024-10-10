@@ -21,10 +21,9 @@ const Navbar = ({act}:any) => {
       try {
         const response = await axios.get("https://car-stop-ten.vercel.app/user/User", {
           headers:{'Authorization':token},
-          withCredentials: true
         });
         console.log("Response data:", response.data);
-        setUser(response.data);  // Set user state
+        setUser(response.data.name);  // Set user state
         setShow(true); // Show user info
       } catch (error) {
         console.error("Error fetching data:",error);
