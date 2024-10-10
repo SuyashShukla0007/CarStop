@@ -47,7 +47,7 @@ app.use(cors({
 
 
 app.use(cookieParser());
-mongoose.connect('mongodb://localhost:27017/carrs', {
+mongoose.connect('mongodb+srv://123103079:PwB5tnnu0MS67Jz5@cluster0.u9ece.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   
