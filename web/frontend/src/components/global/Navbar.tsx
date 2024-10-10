@@ -19,7 +19,8 @@ const Navbar = ({act}:any) => {
       }
       const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/user/User", {
+        const response = await axios.get("https://vercel.live/link/carstop.vercel.app/user/User", {
+          headers:{'Authorization':token},
           withCredentials: true
         });
         console.log("Response data:", response.data);

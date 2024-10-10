@@ -4,7 +4,7 @@ import Navbar from "../components/global/Navbar";
 import axios from "axios";
 import mongoose from "mongoose";
 import { useParams } from "react-router-dom";
-
+import Cookies from "js-cookie";
 interface CarDataType {
   owner: string;
   brand: string;
@@ -43,12 +43,15 @@ const Cars = () => {
   const handleSubmit = async () => {
     try {
       setPop(false);
-      // const token = Cookies.get('token'); 
-      const user = await axios.get("http://localhost:3000/user/User",{withCredentials:true});
+      const token = Cookies.get('token'); 
+     
+      const user = await axios.get("https://vercel.live/link/carstop.vercel.app/user/User",{
+        headers:{'Authorization':token},
+        withCredentials:true});
       console
       const postedBy = user.data.name;
       const ID = id?.split("=")[1];
-      await axios.post(`http://localhost:3000/car/comment/${ID}`, {
+      await axios.post(`https://vercel.live/link/carstop.vercel.app/car/comment/${ID}`, {
         text: text,
         postedBy: postedBy,
         time: new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long' }).format(new Date())
@@ -65,7 +68,7 @@ const Cars = () => {
     const fetchCar = async () => {
       try {
         const ID = id?.split("=")[1];
-        const res = await axios.get<{ car: CarDataType }>(`http://localhost:3000/car/buy/${ID}`);
+        const res = await axios.get<{ car: CarDataType }>(`https://vercel.live/link/carstop.vercel.app/car/buy/${ID}`);
         setCarData(res.data.car);
         console.log(res.data.car);
       } catch (err) {
@@ -92,7 +95,7 @@ const Cars = () => {
       </button>
 
       {Pop && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
           <div className="relative h-[40vh] w-[30vw] p-6 flex flex-col justify-center items-center text-black bg-white shadow-lg rounded-lg">
             <button
               className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold"

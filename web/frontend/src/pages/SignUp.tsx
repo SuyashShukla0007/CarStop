@@ -51,17 +51,18 @@ const navigate=useNavigate()
     e.preventDefault() // Prevent the default form submission
 
     try {
-      const res = await axios.post("http://localhost:3000/user/register", { formValues })
+      const res = await axios.post("https://vercel.live/link/carstop.vercel.app/user/register" ,formValues )
 
 
       console.log(res.data.token)
+      
       //res ok
       navigate('/')
       Cookies.set('token', res.data.token, {
         expires: 1, // 1 day (adjust as needed)
         path: '/',  // Ensure it is accessible site-wide
         secure: true,  // Use 'true' if you're in production and using HTTPS
-        sameSite: 'Lax',  // Adjust this for cross-site requests if needed
+        sameSite: 'none',  // Adjust this for cross-site requests if needed
       });
     } catch (error) {
       console.error(error)

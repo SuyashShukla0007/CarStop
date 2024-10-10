@@ -51,13 +51,14 @@ console.log(props)
       
       <div className='flex flex-col md:flex-row gap-4'>
         <div className='flex justify-center'>
-          <img src={img} alt="Car" className='w-[55vw] h-[80vh] ml-[9vw]  rounded-md shadow-lg' />
+          <img src={props.images[0]} alt="Car" className='w-[55vw] h-[80vh] ml-[9vw]  rounded-md shadow-lg' />
         </div>
 
         <div className='flex flex-row md:flex-col gap-2'>
-          <img src={img} alt="Car" className='w-[22vw] h-[26vh] object-cover rounded-md shadow-sm' />
-          <img src={img} alt="Car" className='w-[22vw] h-[26vh] object-cover rounded-md shadow-sm' />
-          <img src={img} alt="Car" className='w-[22vw] h-[26vh] object-cover rounded-md shadow-sm' />
+          
+         {   props.images.map(( image,k)=> (<img key={k} src={image} alt="Car" className='w-[22vw] h-[26vh] object-cover rounded-md shadow-sm' />))}
+          
+
         </div>
       </div>
 
