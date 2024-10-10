@@ -41,35 +41,43 @@ export const getUser = async (req, res) => {
 // Register User
 export const register = async (req, res) => {
     try {
-        console.log(req.body); // Log the request body to verify its content
-        const { name, email, password, phone } = req.body;
-
-        // Check if password is provided
-        if (!password) {
-            return res.status(400).json({ error: 'Password is required' });
-        }
-
-        // Check if user already exists
-        let user = await User.findOne({ email });
-        if (user) {
-            return res.status(400).json({ error: 'User already exists' });
-        }
-
-        // Hash the password
-        const hashedPassword = bcrypt.hashSync(password, 10);
-        user = new User({ name, email, password: hashedPassword,uniqueId:nanoid(6), phone });
-        await user.save();
-
-        // Create a token
-        const payload = { id: user._id };
-        const token = jwt.sign(payload, 'ca', { expiresIn: '3d' });
-
-        res.status(200).json({ message: 'User registered successfully', token });
+      console.log(req.body); // Log the request body to verify its content
+      const { name, email, password, phone } = req.body;
+  
+      // Check if all required fields are provided
+      if (!password || !email || !name || !phone) {
+        return res.status(400).json({ error: 'All fields are required' });
+      }
+  
+      // Check if user already exists by email
+      let user = await User.findOne({ email });
+      if (user) {
+        return res.status(400).json({ error: 'User already exists' });
+      }
+  
+      // Hash the password
+      const hashedPassword = bcrypt.hashSync(password, 10);
+  
+      // Create new user
+      user = new User({ 
+        name, 
+        email, 
+        password: hashedPassword, 
+        uniqueId: nanoid(6), // Generate uniqueId here
+        phone 
+      });
+      await user.save();
+  
+      // Create a JWT token
+      const payload = { id: user._id };
+      const token = jwt.sign(payload, 'ca', { expiresIn: '3d' });
+  
+      res.status(200).json({ message: 'User registered successfully', token });
     } catch (err) {
-        console.error('Error registering user:', err);
-        res.status(400).json({ error: err.message });
+      console.error('Error registering user:', err);
+      res.status(400).json({ error: err.message });
     }
-};
+  };
 
 // Logout User
 export const logout = (req, res) => {
