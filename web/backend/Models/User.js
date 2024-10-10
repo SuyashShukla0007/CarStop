@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema({
     type:Number,
     required:true
   },
+  uniquieId:{
+    type:nanoid(6),
+    required:true
+  }
+  ,
   password: {
     type: String,
     required: true,

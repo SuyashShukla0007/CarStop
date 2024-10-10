@@ -56,7 +56,7 @@ export const register = async (req, res) => {
 
         // Hash the password
         const hashedPassword = bcrypt.hashSync(password, 10);
-        user = new User({ name, email, password: hashedPassword, phone });
+        user = new User({ name, email, password: hashedPassword,uniqueId:nanoid(6), phone });
         await user.save();
 
         // Create a token
