@@ -3,17 +3,42 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import Carrouter from './Routes/Car.js';
-
+import dotenv from 'dotenv'
 // Define your routes here
 import Userrouter from './Routes/User.js';
 import mongoose from 'mongoose';
+
+//connection to cloudinary
+
+dotenv.config();
+import cloudinaryv1 from "cloudinary"
+const cloudinary = cloudinaryv1.v2
+
+function cloudinaryConnect() {
+  try {
+    cloudinary.config({
+      api_key: process.env.API_KEY,
+      api_secret: process.env.API_SECRET,
+      cloud_name: process.env.CLOUD_NAME,
+    })
+
+    console.log("Cloudinary connected successfully",process.env.API_KEY)
+  } catch (err) {
+    console.log("Some error occured while connecting with cloudinary", err)
+  }
+}
+
+cloudinaryConnect()
+
+
+
 
 const app = express();
 const port = 3000;
 
 
 app.use(cors({
-  origin: 'http://localhost:5173', // Replace with your frontend URL
+  origin: '*', // Replace with your frontend URL
   credentials: true
 }));
 

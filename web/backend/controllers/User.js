@@ -8,7 +8,7 @@ const secret = 'ca'; // Use environment variable for secret
 // Get User
 export const getUser = async (req, res) => {
     try {
-        const toke = req.cookies.token // Access token from cookies
+        const toke =req.headers['authorization']
 
         if (!toke) {
             return res.status(400).json("Token is required");
@@ -41,7 +41,7 @@ export const getUser = async (req, res) => {
 export const register = async (req, res) => {
     try {
         console.log(req.body); // Log the request body to verify its content
-        const { name, email, password, phone } = req.body.formValues;
+        const { name, email, password, phone } = req.body;
 
         // Check if password is provided
         if (!password) {

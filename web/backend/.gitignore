@@ -36,3 +36,4 @@ Thumbs.db
 # Miscellaneous
 *.tgz
 *.gz
+.vercel
