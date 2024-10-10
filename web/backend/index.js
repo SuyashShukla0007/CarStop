@@ -47,7 +47,7 @@ app.use(cors({
 
 
 app.use(cookieParser());
-mongoose.connect('mongodb+srv://123103079:PwB5tnnu0MS67Jz5@cluster0.u9ece.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('mongodb+srv://123103079:PwB5tnnu0MS67Jz5@cluster0.u9ece.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/carStop', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   
