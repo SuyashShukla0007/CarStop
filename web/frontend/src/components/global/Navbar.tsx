@@ -19,7 +19,7 @@ const Navbar = ({act}:any) => {
       }
       const fetchUser = async () => {
       try {
-        const response = await axios.get("https://vercel.live/link/carstop.vercel.app/user/User", {
+        const response = await axios.get("https://car-stop-ten.vercel.app/user/User", {
           headers:{'Authorization':token},
           withCredentials: true
         });

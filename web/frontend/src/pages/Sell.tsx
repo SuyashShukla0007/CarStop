@@ -53,7 +53,7 @@ export default function SellForm() {
 
     try {
       const token =Cookies.get('token')
-      const response = await axios.post("https://vercel.live/link/carstop.vercel.app/car/sell", formData, {
+      const response = await axios.post("https://car-stop-ten.vercel.app/car/sell", formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization':token

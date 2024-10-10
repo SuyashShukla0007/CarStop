@@ -51,7 +51,7 @@ const navigate=useNavigate()
     e.preventDefault() // Prevent the default form submission
 
     try {
-      const res = await axios.post("https://vercel.live/link/carstop.vercel.app/user/register" ,formValues )
+      const res = await axios.post("https://car-stop-ten.vercel.app/user/register" ,formValues )
 
 
       console.log(res.data.token)

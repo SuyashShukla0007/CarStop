@@ -45,13 +45,13 @@ const Cars = () => {
       setPop(false);
       const token = Cookies.get('token'); 
      
-      const user = await axios.get("https://vercel.live/link/carstop.vercel.app/user/User",{
+      const user = await axios.get("https://car-stop-ten.vercel.app/user/User",{
         headers:{'Authorization':token},
         withCredentials:true});
       console
       const postedBy = user.data.name;
       const ID = id?.split("=")[1];
-      await axios.post(`https://vercel.live/link/carstop.vercel.app/car/comment/${ID}`, {
+      await axios.post(`https://car-stop-ten.vercel.app/car/comment/${ID}`, {
         text: text,
         postedBy: postedBy,
         time: new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long' }).format(new Date())
@@ -68,7 +68,7 @@ const Cars = () => {
     const fetchCar = async () => {
       try {
         const ID = id?.split("=")[1];
-        const res = await axios.get<{ car: CarDataType }>(`https://vercel.live/link/carstop.vercel.app/car/buy/${ID}`);
+        const res = await axios.get<{ car: CarDataType }>(`https://car-stop-ten.vercel.app/car/buy/${ID}`);
         setCarData(res.data.car);
         console.log(res.data.car);
       } catch (err) {
