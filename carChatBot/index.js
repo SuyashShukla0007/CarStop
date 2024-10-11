@@ -115,6 +115,9 @@ mongoose.connection.on('connected', () => {
   console.log('Mongoose is connected');
 });
 
+
+app.use(cors({origin:'*'}))
+
 mongoose.connection.on('error', (err) => {
   console.log('Mongoose connection error:', err);
 });
