@@ -5,6 +5,7 @@ import axios from "axios";
 import mongoose from "mongoose";
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
+import Loading from "../components/global/Loading";
 interface CarDataType {
   owner: string;
   brand: string;
@@ -45,9 +46,14 @@ const Cars = () => {
       setPop(false);
       const token = Cookies.get('token'); 
      
+      if(token === undefined){
+        alert("Please login to comment");
+        return;
+      }
+
       const user = await axios.get("https://car-stop-ten.vercel.app/user/User",{
         headers:{'Authorization':token}});
-      console
+      
       const postedBy = user.data.name;
       const ID = id?.split("=")[1];
       await axios.post(`https://car-stop-ten.vercel.app/car/comment/${ID}`, {
@@ -78,7 +84,7 @@ const Cars = () => {
     fetchCar();
   }, [id, Get]);
 
-  if (!carData) return <div>Loading...</div>;
+  if (!carData) return <Loading/>;
 
   return (
     <div className="p-4">
@@ -87,7 +93,7 @@ const Cars = () => {
       </div>
 
       <button
-        className="px-5 py-2 text-white bg-red absolute top-[145vh] left-[30vw] w-[200px] rounded-lg"
+        className="px-5 py-2 text-white bg-red absolute top-[142vh] left-[30vw] w-[200px] rounded-lg"
         onClick={() => setPop(true)}
       >
         Add comment

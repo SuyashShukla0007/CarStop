@@ -4,7 +4,7 @@ import img2 from '../assets/mclaren.jpg'
 import { useNavigate } from 'react-router-dom'
 import img4 from '../assets/gtr.jpeg'
 // @ts-ignore
-import LoadingSpinner from '../components/global/Loading'
+import Loading from '../components/global/Loading'
 
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -72,7 +72,7 @@ const navigate=useNavigate()
   }
 
   if (loading) {
-    return <LoadingSpinner />
+    return <Loading />
   }
 
   return (

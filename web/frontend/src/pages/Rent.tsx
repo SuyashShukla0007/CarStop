@@ -3,6 +3,7 @@ import  { useState, useEffect } from 'react'
 import { CarDataType } from '../components/types/Car'
 import Card from '../components/global/Card'
 import Navbar from '../components/global/Navbar'
+import Loading from '../components/global/Loading'
 
 const Rent = () => {
   const [carOnRent, setCarOnRent] = useState<CarDataType[]>([]) // Initialize as an empty array
@@ -54,7 +55,7 @@ const Rent = () => {
         ))
         
       ) : (
-        <p>No cars available for rent.</p>
+        <Loading/>
       )}
       </div>
     </div>

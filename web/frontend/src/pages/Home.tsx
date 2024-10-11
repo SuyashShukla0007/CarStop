@@ -1,7 +1,7 @@
 import {useEffect, useState } from 'react';
 import TopH from '../components/Home/TopH';
 import MidH from '../components/Home/MidH';
-import LoadingSpinner from '../components/global/Loading'
+import Loading from '../components/global/Loading'
 import Slider from '../components/Home/Slider';
 const Home = () => {
   const [renderStep, setRenderStep] = useState(0);
@@ -25,7 +25,7 @@ const Home = () => {
 
 
   if (loading) {
-    return <LoadingSpinner/>;
+    return <Loading/>;
   }
 
 

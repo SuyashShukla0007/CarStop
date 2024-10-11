@@ -3,21 +3,34 @@ import  { useState, useEffect } from 'react'
 import { CarDataType } from '../components/types/Car'
 import Card from '../components/global/Card'
 import Navbar from '../components/global/Navbar'
+import Loading from '../components/global/Loading'
 
 const Buy = () => {
+
   const [carOnRent, setCarOnRent] = useState<CarDataType[]>([]) // Initialize as an empty array
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const fetchCars = async () => {
       try {
         const res = await axios.get("https://car-stop-ten.vercel.app/car/buyAll")
-        setCarOnRent(res.data.cars)
+        setCarOnRent(res.data.cars)      
         console.log(res.data.cars)
+      setLoading(false)
       } catch (error) {
         console.error("Error fetching cars: ", error)
       }
     }
     fetchCars()
+
+   
+
   }, [])
+
+
+
+
+if(loading)
+  return (<Loading/>)
 
   return (
     <div>
@@ -54,7 +67,9 @@ const Buy = () => {
         ))
         
       ) : (
-        <p>No cars available for rent.</p>
+        <p className='text-red text-3xl w-[30vw] font-bold'>
+          No cars available for sale
+        </p>
       )}
       </div>
     </div>

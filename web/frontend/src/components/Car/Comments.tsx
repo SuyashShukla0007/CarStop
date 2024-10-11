@@ -1,9 +1,14 @@
 const Comments = ({ comment }: any) => {
 
    //remove first element from array
-  comment.shift()
+  
+
+   if(comment==null)
+    return <h1 className="text-2xl text-red font-semibold mb-[2vh] mt-12 ml-[12vw] ">No Comments</h1>
+
   const reversedComments = [...comment].reverse()
  
+
 
   return (
 
@@ -11,7 +16,7 @@ const Comments = ({ comment }: any) => {
     <div className="mt-[5vh]">
       <h1 className="text-red font-bold mb-[2vh] text-3xl  ml-[12vw]">Comments</h1>
 
-      {reversedComments.map((com: any, idx: any) => (
+      {reversedComments?.map((com: any, idx: any) => (
         
         <div
           key={idx}

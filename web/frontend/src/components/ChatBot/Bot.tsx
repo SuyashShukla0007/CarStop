@@ -51,7 +51,7 @@ const lastmsg = useRef<HTMLDivElement>(null);
       try {
         // Replace this URL with your actual API endpoint
         const token=Cookies.get('token');
-        const response = await axios.post('http://localhost:5000/api/chat', {message: input },
+        const response = await axios.post('https://car-bot-backend.vercel.app/api/chat', {message: input },
           {
             headers:{
               'Authorization':token

@@ -15,7 +15,7 @@ interface cardata {
     text:string;
     postedBy:string,
     time:string
-  }];
+  }] | null;
   rating?: number;
   isRent: boolean;
   isBuy: boolean;
@@ -37,7 +37,10 @@ console.log(props)
   useEffect (()=>{
     console.log(props)
   }
-  ,[props])
+  ,[props,props.comments])
+
+
+
 
   const [open,setOpen]=useState<boolean>()
 

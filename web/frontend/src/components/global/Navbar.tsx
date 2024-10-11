@@ -9,6 +9,12 @@ const Navbar = ({act}:any) => {
   const [show, setShow] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
 
+
+  const handleLogout=()=>{
+    Cookies.remove('token');
+    window.location.reload();
+  }
+
   useEffect(() => {
    
       const token = Cookies.get('token');
@@ -47,7 +53,9 @@ const Navbar = ({act}:any) => {
         {!show ? (
           <li><NavLink to='/signUp'><button id='sign'>Sign In</button></NavLink></li>
         ) : (
-          <h1 className='text-lg bg-red p-3 w-[120px] text-center rounded font-bold '>Hi!! {user?.name} 😊</h1>
+
+          <h1 className='text-lg bg-red px-3 py-2 cursor-pointer w-[120px] text-center rounded font-bold' onClick={handleLogout}>Logout</h1>
+
         )}
       </ul>
     </div>
