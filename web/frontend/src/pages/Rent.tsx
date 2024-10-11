@@ -4,9 +4,11 @@ import { CarDataType } from '../components/types/Car'
 import Card from '../components/global/Card'
 import Navbar from '../components/global/Navbar'
 import Loading from '../components/global/Loading'
+import { set } from 'mongoose'
 
 const Rent = () => {
   const [carOnRent, setCarOnRent] = useState<CarDataType[]>([]) // Initialize as an empty array
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -14,12 +16,17 @@ const Rent = () => {
         const res = await axios.get("https://car-stop-ten.vercel.app/car/rentAll")
         setCarOnRent(res.data.cars)
         console.log(res.data.cars)
+        setLoading(false)
       } catch (error) {
         console.error("Error fetching cars: ", error)
+        setLoading(false)
       }
     }
     fetchCars()
   }, [])
+
+if(loading)
+  return (<Loading/>)
 
   return (
     <div>
@@ -55,7 +62,9 @@ const Rent = () => {
         ))
         
       ) : (
-        <Loading/>
+        <p className='text-red text-3xl w-[60vw] font-bold'>
+        No cars available for renting, please check back later.
+      </p>
       )}
       </div>
     </div>

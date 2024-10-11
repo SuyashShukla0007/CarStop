@@ -43,7 +43,7 @@ const Card = (props:cardata) => {
         {/* <div id="CardSpecification">{props.description}</div> */}
         {/* {props.Buyprice === null ? ( */}
           <div id='lowestCard'>
-          <div id="cardRentPrice">{`Rent: ${props.Buyprice}`}</div>
+          <div id="cardRentPrice">Price: ${props.Rentprice==0?`${props.Buyprice}`:`${props.Rentprice}`}</div>
           <div id="learnMore">See more</div>
           </div>
         {/* ) : (

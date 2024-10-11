@@ -18,11 +18,10 @@ const Buy = () => {
       setLoading(false)
       } catch (error) {
         console.error("Error fetching cars: ", error)
+        setLoading(false)
       }
     }
     fetchCars()
-
-   
 
   }, [])
 
