@@ -3,12 +3,9 @@ import { NavLink } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import './Navbar.css';
-import { User } from '../types/User';
 
 const Navbar = ({act}:any) => {
   const [show, setShow] = useState<boolean>(false);
-  const [user, setUser] = useState<User | null>(null);
-
 
   const handleLogout=()=>{
     Cookies.remove('token');
@@ -29,7 +26,6 @@ const Navbar = ({act}:any) => {
           headers:{'Authorization':token},
         });
         console.log("Response data:", response.data);
-        setUser(response.data.name);  // Set user state
         setShow(true); // Show user info
       } catch (error) {
         console.error("Error fetching data:",error);

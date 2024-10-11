@@ -4,7 +4,6 @@ import { CarDataType } from '../components/types/Car'
 import Card from '../components/global/Card'
 import Navbar from '../components/global/Navbar'
 import Loading from '../components/global/Loading'
-import { set } from 'mongoose'
 
 const Rent = () => {
   const [carOnRent, setCarOnRent] = useState<CarDataType[]>([]) // Initialize as an empty array
