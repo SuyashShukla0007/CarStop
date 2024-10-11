@@ -5,7 +5,7 @@ const Userrouter = express.Router();
 import {login,register,getUser} from '../controllers/User.js'
 // define the routes
 // login
-Userrouter.get('/login',login)
+Userrouter.post('/login',login)
 // register
 Userrouter.post('/register',register)
 // logout
