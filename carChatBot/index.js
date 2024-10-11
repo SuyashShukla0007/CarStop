@@ -93,8 +93,10 @@ import mongoose from 'mongoose';
 import Prompt from './models/prompt.js'; // Adjust the path to your model file
 import jwt from 'jsonwebtoken';
 const app = express();
+import dotenv from 'dotenv'
 const PORT = 5000;
 
+dotenv.config() // Load environment variables from a .env file
 // Initialize Google Generative AI
 const apiKey = "AIzaSyAkjOkygF8s4m4yy95UE0yc6mTfV6Flct8" // Use environment variables for sensitive data
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -104,7 +106,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/your-database', {
+mongoose.connect(process.env.mongo, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
