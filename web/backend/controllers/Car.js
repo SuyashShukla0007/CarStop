@@ -86,7 +86,7 @@ export const sellCar = async (req, res) => {
         email,
         phone,
         images: imageUrls,
-        comments:[{}],
+        comments:null,
         rating: 0,
         isRent,
         isBuy,

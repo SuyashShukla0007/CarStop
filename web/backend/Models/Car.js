@@ -30,7 +30,8 @@ const carSchema = new mongoose.Schema({
       text:String,
       postedBy:String,
       time:String
-    }],
+    }] || null,
+    default: null,
     required: false
   },
   rating: {
