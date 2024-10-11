@@ -98,7 +98,7 @@ export const login = async (req, res) => {
         console.log(email, password);
         let user = await User.find({ email });
         if (!user) {
-            return res.status(401).json({ error: "Invalid email or password" });
+            return res.status(401).json({ error: "Invalid email or password", email,password });
         }
         const isMatch = bcrypt.compareSync(password, user.password);
         if (!isMatch) {
