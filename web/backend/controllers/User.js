@@ -95,7 +95,8 @@ export const logout = (req, res) => {
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        let user = await User.findOne({ email });
+        console.log(email, password);
+        let user = await User.find({ email });
         if (!user) {
             return res.status(401).json({ error: "Invalid email or password" });
         }
