@@ -104,7 +104,7 @@ export const login = async (req, res) => {
             return res.status(401).json({ error: "Invalid email or password" });
         }
         const payload = { id: user._id };
-        const token = jwt.sign(payload, secret, { expiresIn: '1d' });
+        const token = jwt.sign(payload, 'ca', { expiresIn: '1d' });
         res.status(200).json({ message: "Login successful", token });
     } catch (err) {
         console.error('Error during login:', err);

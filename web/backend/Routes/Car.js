@@ -14,6 +14,9 @@ Carrouter.post('/rent/:userid',rentCar)
 Carrouter.get('/buy/:carid',buy)
 // get all cars for sale
 Carrouter.get('/buyAll',buyAll)
+
+
+
 // get all cars for rent
 Carrouter.get('/rentAll',rentAll)
 
