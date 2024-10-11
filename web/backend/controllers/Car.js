@@ -241,9 +241,16 @@ export const addComment = async (req, res) => {
       time
     };
 console.log(car)
+// comments can be null initially
+
+    if(car.comments==null){
+      car.comments=[{text:text, postedBy:postedBy, time:time}]
+    }
+
+else{
     // Add the comment to the car's comments array
     car.comments.push(newComment);
-
+}
     // Save the car with the new comment
     await car.save();
 
