@@ -3,6 +3,8 @@ import TopH from '../components/Home/TopH';
 import MidH from '../components/Home/MidH';
 import Loading from '../components/global/Loading'
 import Slider from '../components/Home/Slider';
+import Footer from '../components/global/Footer';
+import { Divide } from 'lucide-react';
 const Home = () => {
   const [renderStep, setRenderStep] = useState(0);
 
@@ -49,9 +51,14 @@ const Home = () => {
 
       {/* Placeholder for botHome, you can conditionally render this as needed */}
       {renderStep >= 3 && (
-        <div id="botHome" className={renderStep >= 3 ? 'slide-in-top' : ''}></div>
+        <div id="botHome" className={renderStep >= 3 ? 'slide-in-top' : ''}><Footer/></div>
       )}
+
+
+
+     
     </div>
+
   );
 }
 

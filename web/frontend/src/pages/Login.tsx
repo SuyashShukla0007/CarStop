@@ -1,6 +1,7 @@
 import { FormEvent } from 'react';
 import img from '../assets/Login.jpg';
 import { useState } from 'react';
+import Loading from '../components/global/Loading';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
@@ -9,10 +10,10 @@ export function Login() {
   const navi=useNavigate()
   const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
-  
+  const [loading,setLoading]=useState(false)
   const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setLoading(true)
     const body:any={email,password}
     try
     {
@@ -21,6 +22,7 @@ export function Login() {
     {
       Cookies.set('token',res.data.token)
       console.log(res.data.message)
+      setLoading(false)
       navi('/')
     }
     }
@@ -31,6 +33,11 @@ export function Login() {
 
 console.log('login')
   };
+
+  if(loading)
+  {
+    return <Loading/>
+  }
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">

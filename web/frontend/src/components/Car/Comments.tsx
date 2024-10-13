@@ -4,7 +4,7 @@ const Comments = ({ comment }: any) => {
   
 
    if(comment==null)
-    return <h1 className="text-2xl text-red font-semibold mb-[2vh] mt-12 ml-[12vw] ">No Comments</h1>
+    return <h1 className="text-2xl text-red font-semibold mb-[2vh] mt-12 ml-[12vw] "></h1>
 
   const reversedComments = [...comment].reverse()
  
@@ -13,8 +13,8 @@ const Comments = ({ comment }: any) => {
   return (
 
     
-    <div className="mt-[5vh]">
-      <h1 className="text-red font-bold mb-[2vh] text-3xl  ml-[12vw]">Comments</h1>
+    <div className="mt-[10vh] ">
+      
 
       {reversedComments?.map((com: any, idx: any) => (
         

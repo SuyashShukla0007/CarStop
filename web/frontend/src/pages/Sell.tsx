@@ -1,13 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
-import img from '../assets/sellcar.jpg'
+import img from "../assets/sellcar.jpg";
 import { House } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../components/global/Loading";
 export default function SellForm() {
-
-  const navi=useNavigate();
+  const navi = useNavigate();
 
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +30,9 @@ export default function SellForm() {
     year: 0,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value, type, checked } = e.target as HTMLInputElement;
     setFormValues({
       ...formValues,
@@ -60,51 +61,52 @@ export default function SellForm() {
       }
 
       setLoading(true);
-
     });
 
     try {
-      const token =Cookies.get('token')
+      const token = Cookies.get("token");
 
-      if(!token){
+      if (!token) {
         alert("Please login to sell your car");
-        return; 
+        navi("/login");
+        return;
       }
 
-      const response = await axios.post("https://car-stop-ten.vercel.app/car/sell", formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization':token
-        },
-      });
-
+      const response = await axios.post(
+        "https://car-stop-ten.vercel.app/car/sell",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: token,
+          },
+        }
+      );
 
       if (!response) {
         throw new Error("Network response was not ok");
       }
 
       setLoading(false);
-      navi('/')
-
-      
-      
+      navi("/");
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  if(loading)
-    return <Loading/>
+  if (loading) return <Loading />;
 
   return (
-    <div className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8" style={{backgroundImage:`url(${img})`, backgroundPosition:'center'}} >
-    
-    <div className="ml-10 fixed"><House color="red" size={50} onClick={()=>navi('/')} /></div>
+    <div
+      className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8"
+      style={{ backgroundImage: `url(${img})`, backgroundPosition: "center" }}
+    >
+      <div className="ml-10 fixed">
+        <House color="red" size={50} onClick={() => navi("/")} />
+      </div>
 
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-      
+      <div className="max-w-3xl mx-auto bg-white opacity-85 rounded-lg shadow-md overflow-hidden">
         <div className="px-4 py-5 sm:p-6">
-          
           <h2 className="text-2xl font-bold text-red mb-6">List Your Car</h2>
           <form
             action=""
@@ -115,7 +117,10 @@ export default function SellForm() {
           >
             {/* Owner */}
             <div>
-              <label htmlFor="owner" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="owner"
+                className="block text-sm font-medium text-red"
+              >
                 Owner
               </label>
               <input
@@ -123,14 +128,17 @@ export default function SellForm() {
                 id="owner"
                 name="owner"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block text-red  w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Brand */}
             <div>
-              <label htmlFor="brand" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="brand"
+                className="block text-sm font-medium text-red"
+              >
                 Brand
               </label>
               <input
@@ -138,14 +146,17 @@ export default function SellForm() {
                 id="brand"
                 name="brand"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Color */}
             <div>
-              <label htmlFor="color" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="color"
+                className="block text-sm font-medium text-red"
+              >
                 Color
               </label>
               <input
@@ -153,14 +164,17 @@ export default function SellForm() {
                 id="color"
                 name="color"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Images */}
             <div>
-              <label htmlFor="images" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="images"
+                className="block text-sm font-medium text-red"
+              >
                 Images
               </label>
               <input
@@ -174,14 +188,15 @@ export default function SellForm() {
             </div>
 
             {/* Comments */}
-            
 
             {/* Rating */}
-        
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-red"
+              >
                 Email
               </label>
               <input
@@ -189,14 +204,17 @@ export default function SellForm() {
                 id="email"
                 name="email"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Phone */}
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-red"
+              >
                 Phone
               </label>
               <input
@@ -204,7 +222,7 @@ export default function SellForm() {
                 id="phone"
                 name="phone"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
@@ -222,7 +240,10 @@ export default function SellForm() {
                       className="h-4 w-4 text-red focus:ring-red border-red rounded"
                       onChange={handleChange}
                     />
-                    <label htmlFor="isRent" className="ml-3 block text-sm font-medium text-red">
+                    <label
+                      htmlFor="isRent"
+                      className="ml-3 block text-sm font-medium text-red"
+                    >
                       Available for Rent
                     </label>
                   </div>
@@ -234,7 +255,10 @@ export default function SellForm() {
                       className="h-4 w-4 text-red focus:ring-red border-red rounded"
                       onChange={handleChange}
                     />
-                    <label htmlFor="isBuy" className="ml-3 block text-sm font-medium text-red">
+                    <label
+                      htmlFor="isBuy"
+                      className="ml-3 block text-sm font-medium text-red"
+                    >
                       Available for Purchase
                     </label>
                   </div>
@@ -244,7 +268,10 @@ export default function SellForm() {
 
             {/* Engine */}
             <div>
-              <label htmlFor="engine" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="engine"
+                className="block text-sm font-medium text-red"
+              >
                 Engine
               </label>
               <input
@@ -252,14 +279,17 @@ export default function SellForm() {
                 id="engine"
                 name="engine"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Transmission */}
             <div>
-              <label htmlFor="transmission" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="transmission"
+                className="block text-sm font-medium text-red"
+              >
                 Transmission
               </label>
               <input
@@ -267,14 +297,17 @@ export default function SellForm() {
                 id="transmission"
                 name="transmission"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Location */}
             <div>
-              <label htmlFor="location" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="location"
+                className="block text-sm font-medium text-red"
+              >
                 Location
               </label>
               <input
@@ -282,42 +315,51 @@ export default function SellForm() {
                 id="location"
                 name="location"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Rent Price */}
             <div>
-              <label htmlFor="Rentprice" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="Rentprice"
+                className="block text-sm font-medium text-red"
+              >
                 Rent Price
               </label>
               <input
                 type="number"
                 id="Rentprice"
                 name="Rentprice"
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Buy Price */}
             <div>
-              <label htmlFor="Buyprice" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="Buyprice"
+                className="block text-sm font-medium text-red"
+              >
                 Buy Price
               </label>
               <input
                 type="number"
                 id="Buyprice"
                 name="Buyprice"
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Seats */}
             <div>
-              <label htmlFor="seats" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="seats"
+                className="block text-sm font-medium text-red"
+              >
                 Seats
               </label>
               <input
@@ -325,14 +367,17 @@ export default function SellForm() {
                 id="seats"
                 name="seats"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Engine Type */}
             <div>
-              <label htmlFor="engineType" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="engineType"
+                className="block text-sm font-medium text-red"
+              >
                 Engine Type
               </label>
               <input
@@ -340,14 +385,17 @@ export default function SellForm() {
                 id="engineType"
                 name="engineType"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Model */}
             <div>
-              <label htmlFor="model" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="model"
+                className="block text-sm font-medium text-red"
+              >
                 Model
               </label>
               <input
@@ -355,14 +403,17 @@ export default function SellForm() {
                 id="model"
                 name="model"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>
 
             {/* Year */}
             <div>
-              <label htmlFor="year" className="block text-sm font-medium text-red">
+              <label
+                htmlFor="year"
+                className="block text-sm font-medium text-red"
+              >
                 Year
               </label>
               <input
@@ -370,7 +421,7 @@ export default function SellForm() {
                 id="year"
                 name="year"
                 required
-                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red sm:text-sm"
+                className="mt-1 block w-full border border-red rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red focus:border-red font-semibold text-red sm:text-sm"
                 onChange={handleChange}
               />
             </div>

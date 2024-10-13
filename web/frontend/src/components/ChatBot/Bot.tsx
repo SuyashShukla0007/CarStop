@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import Cookies from 'js-cookie';
 import img from '../../assets/0389e8dfd7ef480281a03d02d9ecf484.webp'
@@ -14,6 +15,7 @@ interface Message {
 }
 
 const Bot: React.FC<BotProps> = ({ toggle }) => {
+  const navigator =useNavigate()
   const [isOpen, setIsOpen] = useState(true);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -36,6 +38,13 @@ const lastmsg = useRef<HTMLDivElement>(null);
 
   const handleSendMessage = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if(Cookies.get('token')==null)
+    {
+      handleToggle()
+      navigator('/login')
+    }
+
 
     if (input.trim()) {
       const newMessage: Message = {
