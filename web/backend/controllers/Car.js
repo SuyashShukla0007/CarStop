@@ -260,3 +260,12 @@ else{
     res.status(500).json({ message: error.message });
   }
 };
+
+
+export const all =async(req,res)=>{
+
+   const cars=await Car.find({})
+
+  res.status(200).json(cars)
+
+}

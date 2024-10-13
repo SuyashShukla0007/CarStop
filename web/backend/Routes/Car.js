@@ -2,7 +2,7 @@ import express from 'express';
 
 const Carrouter = express.Router();
 // import the functions from the controller
-import {sellCar,rentCar,buy,buyAll,rentAll,addComment} from '../controllers/Car.js'
+import {sellCar,rentCar,buy,buyAll,rentAll,addComment,all} from '../controllers/Car.js'
 
 // define the routes
 
@@ -15,7 +15,7 @@ Carrouter.get('/buy/:carid',buy)
 // get all cars for sale
 Carrouter.get('/buyAll',buyAll)
 
-
+Carrouter.get('/all',all)
 
 // get all cars for rent
 Carrouter.get('/rentAll',rentAll)
