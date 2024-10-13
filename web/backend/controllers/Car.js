@@ -269,3 +269,18 @@ export const all =async(req,res)=>{
   res.status(200).json(cars)
 
 }
+
+export const rating=async(req,res)=>{
+
+    const {newRating}=req.body
+    const carId = req.params.carid;
+
+    const car=Car.findById(carId)
+
+    car.rating.push(newRating)
+
+    await car.save();
+
+    res.status(200).json({msg:"updated saved"})
+
+}

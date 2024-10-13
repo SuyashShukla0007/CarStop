@@ -11,6 +11,8 @@ Userrouter.post('/register',register)
 // logout
 // Userrouter.get('/logout',logout)
 
+
+
 Userrouter.get('/User',getUser)
 
 export default Userrouter;

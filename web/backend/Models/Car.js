@@ -35,7 +35,7 @@ const carSchema = new mongoose.Schema({
     required: false
   },
   rating: {
-    type: Number,
+    type: [Number],
     required: false
   },
   isRent: {
