@@ -3,9 +3,26 @@ import yt from '../../assets/youtube-svgrepo-com.svg'
 import face from '../../assets/facebook-svgrepo-com.svg'
 import tw from '../../assets/twitter-svgrepo-com.svg'
 import { useNavigate } from "react-router-dom";
+import Cookies from'js-cookie'
 import insta from '../../assets/insta-svgrepo-com.svg'
+import { useEffect, useState } from "react";
 const Footer = () => {
   const navi=useNavigate()
+
+
+  const [logged,setLogged]=useState(false)
+
+
+  useEffect(()=>{
+
+    const token=Cookies.get('token')
+    
+    token?setLogged(true):setLogged(false)
+
+
+  },[])
+
+
   return (
 
     <div>
@@ -25,7 +42,9 @@ const Footer = () => {
             Enjoy flexible rental plans, competitive rates, and 24/7 customer
             support. Sign up today and hit the road with confidence!
           </p>
-          <div className="flex  gap-5">
+          {
+              !logged && (
+          <div className="flex  gap-5">             
             <button className="bg-white  text-black p-2 rounded-3xl w-[100px] mt-3" onClick={()=>navi('/signUp')}>
               Register
             </button>
@@ -33,6 +52,7 @@ const Footer = () => {
               Login
             </button>
           </div>
+           )}
         </div>
       </div>
 

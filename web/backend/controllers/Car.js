@@ -223,7 +223,7 @@ export const rentAll=async(req,res)=>{
 
 export const addComment = async (req, res) => {
   try {
-    const { text, postedBy, time } = req.body;
+    const { text, postedBy, time ,rating} = req.body;
 
       const carId = req.params.carid;
       if (!mongoose.Types.ObjectId.isValid(carId)) {
@@ -238,7 +238,8 @@ export const addComment = async (req, res) => {
     const newComment = {
       text,
       postedBy,
-      time
+      time,
+      rating
     };
 console.log(car)
 // comments can be null initially
@@ -251,6 +252,9 @@ else{
     // Add the comment to the car's comments array
     car.comments.push(newComment);
 }
+
+    car?.rating.push(rating)
+
     // Save the car with the new comment
     await car.save();
 
@@ -270,25 +274,3 @@ export const all =async(req,res)=>{
 
 }
 
-export const rating=async(req,res)=>{
-
-    const {newRating}=req.body
-    const carId = req.params.carid;
-
-    const car=await Car.findById(carId)
-    if (!car) {
-      return res.status(404).json({ message: 'Car not found' });
-    }
-
-    if(car.rating==null)
-    {
-      car.rating=[newRating]
-    }
-
-    car?.rating.push(newRating)
-
-    await car.save();
-
-    res.status(200).json({msg:"updated saved"})
-
-}

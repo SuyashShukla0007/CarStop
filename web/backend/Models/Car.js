@@ -29,7 +29,8 @@ const carSchema = new mongoose.Schema({
     type: [{
       text:String,
       postedBy:String,
-      time:String
+      time:String,
+      rating:Number
     }] || null,
     default: null,
     required: false

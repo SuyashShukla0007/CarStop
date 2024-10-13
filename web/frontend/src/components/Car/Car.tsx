@@ -192,7 +192,7 @@ const Car = (props: cardata) => {
         </div>
       </div>
 
-      <Comments comment={props.comments} />
+      <Comments comment={props.comments} rating={props.rating} />
 
       {open && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">

@@ -1,4 +1,5 @@
-const Comments = ({ comment }: any) => {
+import {Stars} from '../../components/global/Stars'
+const Comments = ({ comment ,rating}: any) => {
 
    //remove first element from array
   
@@ -24,8 +25,13 @@ const Comments = ({ comment }: any) => {
         >
          
           <div className="text-lg font-semibold border-b-2 border-gray-300 flex justify-between w-full p-4 text-start">
-            <p>{com.postedBy}</p>
+            
+            <div className='flex items-center'><p className='mr-2'>{com.postedBy}
+            </p>
+            <Stars stars={com?.rating}></Stars>
+            </div>
             <p>{com.time}</p>
+
           </div>
           <p className="p-4 text-gray-600">{com.text}</p>
         </div>

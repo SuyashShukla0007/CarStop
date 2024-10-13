@@ -72,12 +72,9 @@ const Cars = () => {
           day: "numeric",
           month: "long",
         }).format(new Date()),
+        rating:rating
       });
-
-
-      const response=await axios.patch(`https://car-stop-ten.vercel.app/car/rating/${ID}`,rating)
-      console.log(response)
-
+      
       setGet(true);
       setText(""); // Clear the text area after submission
     } catch (err) {
