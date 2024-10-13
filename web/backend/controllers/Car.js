@@ -275,9 +275,17 @@ export const rating=async(req,res)=>{
     const {newRating}=req.body
     const carId = req.params.carid;
 
-    const car=Car.findById(carId)
+    const car=await Car.findById(carId)
+    if (!car) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
 
-    car.rating.push(newRating)
+    if(car.rating==null)
+    {
+      car.rating=[newRating]
+    }
+
+    car?.rating.push(newRating)
 
     await car.save();
 

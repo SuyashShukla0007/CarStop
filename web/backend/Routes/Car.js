@@ -17,7 +17,7 @@ Carrouter.get('/buyAll',buyAll)
 
 Carrouter.get('/all',all)
 
-Carrouter.patch('/rating/:carid',rating)
+Carrouter.post('/rating/:carid',rating)
 // get all cars for rent
 Carrouter.get('/rentAll',rentAll)
 
