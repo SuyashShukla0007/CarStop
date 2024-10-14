@@ -334,9 +334,26 @@ export const editComment=async(req,res)=>{
 export const deleteComment=async(req,res)=>{
   try{
     const id=req.params.carid
+
+    const token=req.headers['authorization']
+
+    const decode=jwt.verify(token,'ca')
+
+    const userId=decode.id
+    const user=await User.findById(userId)
+    const userName=user.name
+
+    
+
   const car=await Car.findById(id)
   
 const {time,postedBy,text}=req.body
+
+
+if(postedBy!=userName)
+{
+res.send(400).send("lol")
+}
  car.comments=car.comments.filter((comment)=> !(comment.postedBy===postedBy && comment.time===time && comment.text===text))
 
    await car.save()
