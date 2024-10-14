@@ -2,7 +2,7 @@ import express from 'express';
 
 const Carrouter = express.Router();
 // import the functions from the controller
-import {sellCar,rentCar,buy,buyAll,rentAll,addComment,all} from '../controllers/Car.js'
+import {sellCar,rentCar,buy,buyAll,rentAll,addComment,all,myCars} from '../controllers/Car.js'
 
 // define the routes
 
@@ -19,8 +19,12 @@ Carrouter.get('/all',all)
 
 // get all cars for rent
 Carrouter.get('/rentAll',rentAll)
-
+//add comment
 Carrouter.post('/comment/:carid',addComment)
+
+//get cars of user
+Carrouter.get('/mycars',myCars)
+
 export default Carrouter;
 
 // the routes are defined in the file above. The routes are then exported to be used in the main file. The routes are defined as follows:

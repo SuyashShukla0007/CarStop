@@ -266,6 +266,10 @@ else{
 };
 
 
+export const deleteComment=()=>{
+  
+}
+
 export const all =async(req,res)=>{
 
    const cars=await Car.find({})
@@ -274,3 +278,33 @@ export const all =async(req,res)=>{
 
 }
 
+export const myCars = async (req, res) => {
+  try {
+    const token = req.headers['authorization'];
+    if (!token) {
+      return res.status(401).send("Token is required");
+    }
+
+    let decode;
+    try {
+      decode = jwt.verify(token, 'ca');
+    } catch (error) {
+      return res.status(401).send("Invalid token");
+    }
+
+    const id = decode.id;
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    const cars = await Car.find({ email: user.email });
+    if (!cars || cars.length === 0) {
+      return res.status(404).send("No cars found");
+    }
+
+    res.status(200).json(cars);
+  } catch (error) {
+    res.status(500).json({ msg: "Internal server error", error: error.message });
+  }
+};

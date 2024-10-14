@@ -1,20 +1,10 @@
 import express from 'express';
 
 const Userrouter = express.Router();
-// import the functions from the controller
 import {login,register,getUser} from '../controllers/User.js'
-// define the routes
-// login
 Userrouter.post('/login',login)
-// register
 Userrouter.post('/register',register)
-// logout
-// Userrouter.get('/logout',logout)
-
-
-
 Userrouter.get('/User',getUser)
-
 export default Userrouter;
 
 // The routes are defined in the file above. The routes are then exported to be used in the main file. The routes are defined as follows:
