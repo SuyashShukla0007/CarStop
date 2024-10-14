@@ -1,78 +1,77 @@
-import img1 from '../assets/aston.jpeg'
-import Cookies from 'js-cookie'
-import img2 from '../assets/mclaren.jpg'
-import { useNavigate } from 'react-router-dom'
-import img4 from '../assets/gtr.jpeg'
+import img1 from "../assets/aston.jpeg";
+import Cookies from "js-cookie";
+import img2 from "../assets/mclaren.jpg";
+import { useNavigate } from "react-router-dom";
+import img4 from "../assets/gtr.jpeg";
 // @ts-ignore
-import Loading from '../components/global/Loading'
+import Loading from "../components/global/Loading";
 
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const SignUp = () => {
   const [formValues, setFormValues] = useState({
-    name: '',
+    name: "",
     phone: 0,
-    email: '',
-    password: '',
-    
-  })
-const navigate=useNavigate()
-  const [loading, setLoading] = useState(true)
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
-  const images = [img1, img2, img4]
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const images = [img1, img2, img4];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    setLoading(false)
+    setLoading(false);
 
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 5000) // Change image every 5 seconds
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // Change image every 5 seconds
 
-    return () => clearInterval(interval) // Cleanup interval on component unmount
-  }, [])
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormValues((prevValues) => ({
       ...prevValues,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
+  useEffect(() => {
+    if (Cookies.get("token")) navigate("/");
+  }, []);
 
-  useEffect(()=>{
-    if(Cookies.get('token'))
-      navigate('/')
-  },[])
-
-  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault() // Prevent the default form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default form submission
 
     try {
-      const res = await axios.post("https://car-stop-ten.vercel.app/user/register" ,formValues )
+      const res = await axios.post(
+        "https://carstop.vercel.app/user/register",
+        formValues
+      );
 
+      console.log(res.data.token);
 
-      console.log(res.data.token)
-      
       //res ok
-      navigate('/')
-      Cookies.set('token', res.data.token, {
+      navigate("/");
+      Cookies.set("token", res.data.token, {
         expires: 1, // 1 day (adjust as needed)
-        path: '/',  // Ensure it is accessible site-wide
-        secure: true,  // Use 'true' if you're in production and using HTTPS
-        sameSite: 'none',  // Adjust this for cross-site requests if needed
+        path: "/", // Ensure it is accessible site-wide
+        secure: true, // Use 'true' if you're in production and using HTTPS
+        sameSite: "none", // Adjust this for cross-site requests if needed
       });
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
 
-    console.log('Form submitted:', formValues)
-  }
+    console.log("Form submitted:", formValues);
+  };
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
@@ -89,7 +88,8 @@ const navigate=useNavigate()
             Get Your Free Account Now.
           </h1>
           <p className="text-gray-400 text-xl mb-8 font-serif w-4/5">
-            Let’s get you all set up so you can verify your personal account and begin setting up your profile.
+            Let’s get you all set up so you can verify your personal account and
+            begin setting up your profile.
           </p>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-3">
@@ -162,7 +162,6 @@ const navigate=useNavigate()
                     name="confirmPassword"
                     placeholder="Confirm password"
                     className="p-3 bg-gray-900 border-2 border-blue-800 rounded-lg text-white w-72"
-                 
                   />
                 </div>
 
@@ -180,7 +179,7 @@ const navigate=useNavigate()
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;

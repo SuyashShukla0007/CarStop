@@ -46,10 +46,6 @@ const Car = (props: cardata) => {
     setLarge(image);
   };
 
-  useEffect(() => {
-    console.log(props);
-  }, [props, props.comments]);
-
   const [open, setOpen] = useState<boolean>();
 
   return (
@@ -198,7 +194,7 @@ const Car = (props: cardata) => {
         </div>
       </div>
 
-      <Comments comment={props.comments} rating={props.rating} />
+      <Comments  />
 
       {open && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30">

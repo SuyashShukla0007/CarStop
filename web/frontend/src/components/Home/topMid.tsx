@@ -32,7 +32,7 @@ const TopMid = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res = await axios.get("https://car-stop-ten.vercel.app/car/all");
+        const res = await axios.get("https://carstop.vercel.app/car/all");
         setCarData(res.data);
         console.log(res.data);
       } catch (error) {
