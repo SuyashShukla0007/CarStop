@@ -4,6 +4,7 @@ import { CarDataType } from "../components/types/Car";
 import Card from "../components/global/Card";
 import Navbar from "../components/global/Navbar";
 import Loading from "../components/global/Loading";
+import Footer from "../components/global/Footer";
 
 const Buy = () => {
   const [carOnRent, setCarOnRent] = useState<CarDataType[]>([]); // Initialize as an empty array
@@ -26,7 +27,7 @@ const Buy = () => {
   if (loading) return <Loading />;
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className="pt-10 px-[10vw]">
         <Navbar act="buy"></Navbar>
       </div>
@@ -34,7 +35,7 @@ const Buy = () => {
       <h1 className="text-5xl font-bold pt-10 text-red  text-center">
         Cars for Sale
       </h1>
-      <div className=" gap-10 grid grid-cols-4 px-[5vw] pt-[5vh]">
+      <div className=" gap-10 h-[90vh] grid grid-cols-4 px-[5vw] pt-[5vh]">
         {carOnRent.length > 0 ? (
           carOnRent.map((data, index) => (
             <Card
@@ -56,14 +57,15 @@ const Buy = () => {
               isRent={data.isRent}
               isBuy={data.isBuy}
               rating={data.rating}
-            />
+               comments={data.comments}            />
           ))
         ) : (
-          <p className="text-red text-3xl w-[30vw] font-bold">
+          <p className="text-red text-3xl w-[30vw] h-[90vh] font-bold">
             No cars available for sale
           </p>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

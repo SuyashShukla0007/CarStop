@@ -10,7 +10,13 @@ interface CarData {
   brand: string;
   color: string;
   images: string[];
-  comments?: string[];
+  comments?: [
+    {
+      text: string;
+      postedBy: string;
+      time: string;
+    }
+  ] ;
   rating: number;
   isRent: boolean;
   isBuy: boolean;
@@ -45,6 +51,8 @@ const TopMid = () => {
   return (
     <div className="card-list">
       {carData.map((data, index) => (
+        (
+          data.comments &&
         <Card
           key={index}
           id={data._id}
@@ -68,7 +76,7 @@ const TopMid = () => {
           isRent={data.isRent}
           isBuy={data.isBuy}
           rating={data.rating}
-        />
+        />)
       ))}
     </div>
   );

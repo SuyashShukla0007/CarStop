@@ -25,7 +25,7 @@ const Footer = () => {
 
   return (
 
-    <div>
+    <div className="overflow-x-visible">
       <div className="bg-black opacity-50 absolute w-[100vw] h-[50vh] "></div>
 
       <div className="absolute ml-[5vw] mb-[5vw] mt-[18vh] flex justify-between w-[90vw]">

@@ -3,7 +3,7 @@ import TopMid from '../Home/topMid'
 const MidH= () => {
   return (
     <>
-    <div id="bodyMid">
+    <div id="bodyMid" className='overflow-x-hidden'>
       <div id="headMid">ALL SERVICES</div>
       <div id='topMid'><TopMid/></div>
       <div id='midMid'></div>

@@ -31,7 +31,8 @@ const Home = () => {
 
 
   return (
-    <div id='homeBody' className='w-[100vw] overflow-x-hidden'>
+    <div className='overflow-x-hidden'>
+          <div id='homeBody' className='w-[100vw] overflow-x-hidden'>
       {renderStep >= 1 && (
         <div id="topHome" className={renderStep >= 1 ? 'slide-in-top' : ''}><TopH/></div>
       )}
@@ -47,13 +48,15 @@ const Home = () => {
       )}
 
       {renderStep >= 3 && (
-        <div id="botHome " className={ `overflow-x-hidden ${renderStep >= 3} ? 'slide-in-top' : '' `}><Footer/></div>
+        <div id="botHome " className={ `overflow-x-hidden ${renderStep >= 3} ? 'slide-in-top' : '' overflow-x-hidden `}><Footer/></div>
       )}
 
 
 
      
     </div>
+    </div>
+
 
   );
 }

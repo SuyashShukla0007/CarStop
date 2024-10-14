@@ -4,7 +4,6 @@ import Navbar from "../components/global/Navbar";
 import axios from "axios";
 import mongoose from "mongoose";
 import { useNavigate, useParams } from "react-router-dom";
-import Cookies from "js-cookie";
 import Loading from "../components/global/Loading";
 import Footer from "../components/global/Footer";
 interface CarDataType {
@@ -41,7 +40,7 @@ const Cars = () => {
   const nav = useNavigate();
   const { id } = useParams<{ id: string }>();
   const [carData, setCarData] = useState<CarDataType | null>(null);
-
+const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -51,6 +50,7 @@ const Cars = () => {
         );
         setCarData(res.data.car);
         console.log(res.data.car);
+        setLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -59,7 +59,7 @@ const Cars = () => {
     fetch();
   }, [id]);
 
-  if (!carData) return <Loading />;
+  if (loading) return <Loading />;
 
   return (
     <div className="overflow-x-hidden">
@@ -68,28 +68,30 @@ const Cars = () => {
           <Navbar />
         </div>
 
-        <Car
-          owner={carData.owner}
-          brand={carData.brand}
-          email={carData.email}
-          phone={carData.phone}
-          comments={carData.comments}
-          seats={carData.seats}
-          engineType={carData.engineType}
-          location={carData.location}
-          Buyprice={carData.Buyprice}
-          Rentprice={carData.Rentprice}
-          model={carData.model}
-          year={carData.year}
-          isRent={carData.isRent}
-          images={carData.images}
-          rating={carData.rating}
-          id={carData.id}
-          transmission={carData.transmission}
-          color={carData.color}
-          isBuy={carData.isBuy}
-          engine={carData.engine}
-        />
+        {carData && (
+          <Car
+            owner={carData.owner}
+            brand={carData.brand}
+            email={carData.email}
+            phone={carData.phone}
+            comments={carData.comments}
+            seats={carData.seats}
+            engineType={carData.engineType}
+            location={carData.location}
+            Buyprice={carData.Buyprice}
+            Rentprice={carData.Rentprice}
+            model={carData.model}
+            year={carData.year}
+            isRent={carData.isRent}
+            images={carData.images}
+            rating={carData.rating}
+            id={carData.id}
+            transmission={carData.transmission}
+            color={carData.color}
+            isBuy={carData.isBuy}
+            engine={carData.engine}
+          />
+        )}
       </div>
 
       <Footer />

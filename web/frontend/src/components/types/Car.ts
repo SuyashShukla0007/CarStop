@@ -5,7 +5,13 @@ export type CarDataType= {
   brand: string;
   color: string;
   images: string[];
-  comments: string[];
+  comments: [
+    {
+      text: string;
+      postedBy: string;
+      time: string;
+    }
+  ];
   rating:number;
   isRent: boolean;
   isBuy: boolean;
