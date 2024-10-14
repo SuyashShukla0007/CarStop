@@ -36,8 +36,9 @@ const carSchema = new mongoose.Schema({
     required: false
   },
   rating: {
-    type: [Number],
-    required: false
+    type: Number,
+    required: false,
+    default:0
   },
   isRent: {
     type: Boolean,
