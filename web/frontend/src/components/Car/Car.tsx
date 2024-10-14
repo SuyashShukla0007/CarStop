@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 import { Image } from "lucide-react";
 import { ChevronLeft } from "lucide-react";
 import mongoose from "mongoose";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 interface cardata {
   owner: string;

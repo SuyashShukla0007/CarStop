@@ -3,7 +3,7 @@ import Car from "../components/Car/Car";
 import Navbar from "../components/global/Navbar";
 import axios from "axios";
 import mongoose from "mongoose";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "../components/global/Loading";
 import Footer from "../components/global/Footer";
 interface CarDataType {
@@ -37,7 +37,6 @@ interface CarDataType {
 
 const Cars = () => {
 
-  const nav = useNavigate();
   const { id } = useParams<{ id: string }>();
   const [carData, setCarData] = useState<CarDataType | null>(null);
 const [loading, setLoading] = useState(true);

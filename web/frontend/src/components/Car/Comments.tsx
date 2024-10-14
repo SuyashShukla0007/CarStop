@@ -18,9 +18,6 @@ type CommentType = {
 
 const Comments = () => {
   const [comments, setComments] = useState<CommentType[] | null>(null);
-  const [commentToDelete, setCommentToDelete] = useState<CommentType | null>(
-    null
-  );
   const { id } = useParams();
   const ID = id?.split("=")[1];
   const [Pop, setPop] = useState<boolean>(false);
@@ -39,7 +36,7 @@ const Comments = () => {
   },[])
 
 
-  const handleEdit = (com: CommentType) => {
+  const handleEdit = () => {
     // Logic for editing a comment 
   };
 
@@ -87,7 +84,6 @@ const Comments = () => {
   };
 
   const handleDelete = async (comm: CommentType) => {
-    setCommentToDelete(comm);
 
     try {
       if (!ID) {
@@ -242,7 +238,7 @@ const Comments = () => {
                 <Pencil
                   className="mt-1 cursor-pointer"
                   size={14}
-                  onClick={() => handleEdit(com)}
+                  onClick={() => handleEdit()}
                 />
                 <Trash2
                   className="mt-1 ml-2 cursor-pointer"
