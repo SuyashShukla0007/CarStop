@@ -31,7 +31,7 @@ const Navbar = ({ act }: any) => {
         setShow(true); // Show user info
       } catch (error) {
         console.error("Error fetching data:", error);
-        setShow(false); // Hide user info and show sign-in button on error
+        setShow(true); // Hide user info and show sign-in button on error
       }
     };
 
@@ -39,8 +39,8 @@ const Navbar = ({ act }: any) => {
   }, []); // Empty dependency array, runs only once on mount
 
   return (
-    <div id="box">
-      <ul id="head">
+    <div >
+      <ul className={`ml-0 grid ${show?'grid-cols-7':'grid-cols-6'} gap-0`}>
         <li>
           <p id="logo" className="text-4xl">
             CARHUB
@@ -54,7 +54,7 @@ const Navbar = ({ act }: any) => {
         </NavLink>
         <NavLink
           to="/myCars"
-          className={`navi ${act == "My Cars" ? "text-red font-bold" : ""}`}
+          className={`navi ${act == "My Cars" ? "text-red font-bold" : ""}  ${show?'block':'hidden'}`}
         >
           My Cars
         </NavLink>
