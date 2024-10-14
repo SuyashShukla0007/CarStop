@@ -87,6 +87,22 @@ z
   }
 }
 
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50px);
+  }
+}
+
 .slide-in-top {
   animation: slideInFromTop 1s ease-in forwards;
+}
+
+
+.slide-in-bottom {
+  animation: slideInFromBottom 3s ease-in forwards;
 }

@@ -4,6 +4,7 @@ import { CarDataType } from '../components/types/Car'
 import Card from '../components/global/Card'
 import Navbar from '../components/global/Navbar'
 import Loading from '../components/global/Loading'
+import Footer from '../components/global/Footer'
 
 const Rent = () => {
   const [carOnRent, setCarOnRent] = useState<CarDataType[]>([]) // Initialize as an empty array
@@ -28,10 +29,13 @@ if(loading)
   return (<Loading/>)
 
   return (
-    <div>
+    <>
+    <div className='h-[100vh] overflow-x-hidden'>
 
 <div className='pt-10 px-[10vw]'><Navbar act="rent"></Navbar></div>
-
+  
+    
+    <div className='h-[100vh]'>
 
       <h1 className='text-5xl font-bold pt-10 text-red  text-center'>Cars for Rent</h1>
       <div className=' gap-10 grid grid-cols-4 px-[5vw] pt-[5vh]'>
@@ -43,6 +47,7 @@ if(loading)
             images={data.images}
             owner={data.owner}
             brand={data.brand}
+            comments={data.comments}
             seats={data.seats}
             engineType={data.engineType}
             location={data.location}
@@ -66,7 +71,14 @@ if(loading)
       </p>
       )}
       </div>
+
+    
     </div>
+    <Footer/>
+    </div>
+   
+    </>
+
   )
 }
 

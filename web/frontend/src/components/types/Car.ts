@@ -5,8 +5,8 @@ export type CarDataType= {
   brand: string;
   color: string;
   images: string[];
-  comments?: string[];
-  rating?: number;
+  comments: string[];
+  rating:number;
   isRent: boolean;
   isBuy: boolean;
   engine: 'V4' | 'V6' | 'V8' | 'V12';

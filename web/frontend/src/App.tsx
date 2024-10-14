@@ -8,6 +8,7 @@ import Rent from './pages/Rent';
 import Sell from './pages/Sell';
 import BotIcon from './components/ChatBot/BotIcon';
 import { Login } from './pages/Login';
+import MyCars from './pages/MyCars';
 
 
 
@@ -28,7 +29,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
 
         <Route path='/signUp' element={<Sign/>}></Route>
-
+<Route path='/mycars' element={<MyCars/>}></Route>
         <Route path='/car/:id' element={<Cars/>}></Route>
       </Routes>
      

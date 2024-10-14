@@ -40,9 +40,10 @@ const Navbar = ({act}:any) => {
     <div id="box">
       <ul id="head">
         <li>
-          <p id="logo">CARHUB</p>
+          <p id="logo" className='text-4xl'>CARHUB</p>
         </li>
         <NavLink to='/' className={`navi ${act=="home"?'text-red font-bold':""}`}>Home Page</NavLink>
+        <NavLink to='/myCars' className={`navi ${act=="My Cars" ?'text-red font-bold':""}`}>My Cars</NavLink>
         <NavLink to='/rent' className={`navi ${act=="rent"?'text-red font-bold':""}`}>Rent Car</NavLink>
         <NavLink to='/sell' className={`navi ${act=="sell"?'text-red font-bold':""}`}>Sell Car</NavLink>
         <NavLink to='/buy' className={`navi ${act=="buy"?'text-red font-bold':""}`}>Buy Car</NavLink>

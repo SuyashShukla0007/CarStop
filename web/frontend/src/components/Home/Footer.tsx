@@ -1,12 +1,74 @@
+import img from "../../assets/neil-mark-thomas-vCX0NQeXWiY-unsplash.jpg";
 import yt from '../../assets/youtube-svgrepo-com.svg'
 import face from '../../assets/facebook-svgrepo-com.svg'
 import tw from '../../assets/twitter-svgrepo-com.svg'
+import { useNavigate } from "react-router-dom";
+import Cookies from'js-cookie'
 import insta from '../../assets/insta-svgrepo-com.svg'
-function Footer() {
+import { useEffect, useState } from "react";
+const Footer = () => {
+  const navi=useNavigate()
+
+
+  const [logged,setLogged]=useState(false)
+
+
+  useEffect(()=>{
+
+    const token=Cookies.get('token')
+    
+    token?setLogged(true):setLogged(false)
+
+
+  },[])
+
+
   return (
-    <div className='bg-gray-50 m-0'>
-      
-      <div className=" h-[25vh] mb-2 w-[100vw] flex justify-center">
+
+    <div>
+      <div className="bg-black opacity-50 absolute w-[100vw] h-[50vh] "></div>
+
+      <div className="absolute ml-[5vw] mb-[5vw] mt-[18vh] flex justify-between w-[90vw]">
+        <div>
+          <p className="w-[30%] font-semibold text-gray-300">
+            Join 3,000+ satisfied customers using Car Hub for hassle-free car
+            rentals! Whether for road trips, business, or daily needs, our
+            diverse fleet has you covered. Enjoy flexible plans, competitive
+            rates, and 24/7 support. Sign up today and drive with confidence!
+          </p>
+        </div>
+        <div className="flex-col justify-end text-white w-[40%] ml-5 mr-10 font-semibold  ">
+          <p className="text-gray-300 mb-5">
+            Enjoy flexible rental plans, competitive rates, and 24/7 customer
+            support. Sign up today and hit the road with confidence!
+          </p>
+          {
+              !logged && (
+          <div className="flex  gap-5">             
+            <button className="bg-white  text-black p-2 rounded-3xl w-[100px] mt-3" onClick={()=>navi('/signUp')}>
+              Register
+            </button>
+            <button className="bg-red  p-2 rounded-3xl w-[100px] mt-3" onClick={()=>navi('/login')}>
+              Login
+            </button>
+          </div>
+           )}
+        </div>
+      </div>
+
+      <div
+        className="h-[50vh] w-[100vw]"
+        style={{
+          backgroundImage: `url(${img})`,
+          backgroundPosition: "50% center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div>
+
+
+
+        <div className="bg-white h-[25vh] mb-2 w-[100vw] flex justify-center">
           <div className="border-b-2 border-gray-300 w-[80vw] h-[100%] flex">
           <div className="w-[40%]">
             <header className="text-red font-extrabold font-mono text-[35px] mb-2 mt-4">CARHUB</header>
@@ -59,7 +121,7 @@ function Footer() {
           <p className="text-gray-500 ml-[18vh] ">Carhub, 2024 all right reserved</p>
 
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

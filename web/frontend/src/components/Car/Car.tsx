@@ -23,7 +23,7 @@ interface cardata {
         }
       ]
     | null;
-  rating?: number;
+  rating: number;
   isRent: boolean;
   isBuy: boolean;
   engine: "V4" | "V6" | "V8" | "V12";
@@ -78,13 +78,20 @@ const Car = (props: cardata) => {
                   color="red"
                   className="bg-white rounded-r-lg cursor-pointer"
                   size={50}
-                  onClick={() => openPopup((imageLarge + props.images.length - 1) % props.images.length)}
+                  onClick={() =>
+                    openPopup(
+                      (imageLarge + props.images.length - 1) %
+                        props.images.length
+                    )
+                  }
                 />
                 <ChevronRight
                   color="red"
                   className="bg-white rounded-l-lg cursor-pointer"
                   size={50}
-                  onClick={() => openPopup((imageLarge + 1) % props.images.length)}
+                  onClick={() =>
+                    openPopup((imageLarge + 1) % props.images.length)
+                  }
                 />
               </div>
             </div>
@@ -111,8 +118,8 @@ const Car = (props: cardata) => {
             className="absolute flex text-gray-600 rounded-xl mt-2 md:ml-[53vw] w-[150px] bg-white p-2"
             onClick={() => openPopup(0)}
           >
-            <Image/>
-            <p className="ml-2">See all photos</p> 
+            <Image />
+            <p className="ml-2">See all photos</p>
           </button>
         </div>
 
@@ -137,9 +144,7 @@ const Car = (props: cardata) => {
           <img src={location} alt="" className="h-8 w-8" />
           <p className="text-xl md:text-2xl ml-4">{props.location}</p>
         </div>
-        <p className="text-gray-700 mt-2">
-          {/* Add car info here */}
-        </p>
+        <p className="text-gray-700 mt-2">{/* Add car info here */}</p>
       </div>
 
       <Features
@@ -167,7 +172,8 @@ const Car = (props: cardata) => {
       <div className="w-full md:w-[40vw] lg:w-[25vw] absolute top-[120vh] md:top-[90vh] lg:top-[115vh] items-center right-4 lg:right-[10vw] h-auto flex flex-col gap-4 p-4">
         <div className="flex flex-col w-full items-center border-2 rounded-lg border-gray-300">
           <h4 className="text-lg font-bold border-b-2 border-gray-300 w-full p-4 text-center">
-            Price: ${props.Rentprice === 0 ? props.Buyprice : props.Rentprice}
+            Price: $
+            {props.Rentprice != 0 ? `${props.Rentprice}/day ` : props.Buyprice}
           </h4>
           <button
             className="px-4 my-4 h-12 w-[90%] bg-red text-white font-semibold rounded-lg"

@@ -6,8 +6,8 @@ import mongoose from "mongoose";
 import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import Loading from "../components/global/Loading";
-import { Star } from "lucide-react";
 import { Stars } from "../components/Car/Stars";
+import Footer from "../components/global/Footer";
 interface CarDataType {
   owner: string;
   brand: string;
@@ -20,7 +20,7 @@ interface CarDataType {
       time: string;
     }
   ];
-  rating?: number;
+  rating: number;
   isRent: boolean;
   isBuy: boolean;
   engine: "V4" | "V6" | "V8" | "V12";
@@ -65,25 +65,29 @@ const Cars = () => {
 
       const postedBy = user.data.name;
       const ID = id?.split("=")[1];
-      await axios.post(`https://car-stop-ten.vercel.app/car/comment/${ID}`, {
-        text: text,
-        postedBy: postedBy,
-        time: new Intl.DateTimeFormat("en-GB", {
-          day: "numeric",
-          month: "long",
-        }).format(new Date()),
-        rating:rating
-      });
+      const res = await axios.post(
+        `https://car-stop-ten.vercel.app/car/comment/${ID}`,
+        {
+          text: text,
+          postedBy: postedBy,
+          time: new Intl.DateTimeFormat("en-GB", {
+            day: "numeric",
+            month: "long",
+          }).format(new Date()),
+          rating: rating,
+        }
+      );
       
-      setGet(true);
-      setText(""); // Clear the text area after submission
+      setGet(!Get)
+setCarData(res.data)
+      setText("");
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    const fetchCar = async () => {
+    const fetch = async () => {
       try {
         const ID = id?.split("=")[1];
         const res = await axios.get<{ car: CarDataType }>(
@@ -96,90 +100,93 @@ const Cars = () => {
       }
     };
 
-    fetchCar();
-  }, [id, Get]);
+  fetch()
+  
+  }, [id, Get,carData]);
 
   const [rating, setRating] = useState(0);
 
-  const totalStars=5
-
-
-  const handleRatingChange=(newRating:number)=>{
-    setRating(newRating+1)
-    console.log(rating)
-  }
-
+  const handleRatingChange = (newRating: number) => {
+    setRating(newRating + 1);
+    console.log(rating);
+  };
 
   if (!carData) return <Loading />;
 
   return (
-    <div className="p-4">
-      <div className="pl-[10vw] mt-6 mb-[3vh]">
-        <Navbar />
-      </div>
-      <div className="absolute top-[135vh] w-[25vw] left-[15vw] flex justify-between">
-        <h1 className="text-red font-bold text-3xl  m">Comments</h1>
-        <button
-          className="px-5 py-2 text-white bg-red  w-[200px] rounded-lg"
-          onClick={() => setPop(true)}
-        >
-          Add comment
-        </button>
-      </div>
-
-      {Pop && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
-          <div className="relative h-[40vh] w-[30vw] p-6 flex flex-col justify-center items-center text-black bg-white shadow-lg rounded-lg">
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold"
-              onClick={() => setPop(false)}
-            >
-              &times;
-            </button>
-            <h1 className="text-3xl mb-4 font-bold text-red">Add Comment</h1>
-
-            
-
-<Stars totalStars={5} onRatingChange={handleRatingChange} initialRating={rating} />
-
-            <textarea
-              className="w-full h-[50%] p-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 resize-none text-gray-700"
-              placeholder="Write your comment here..."
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-            <button
-              className="text-white font-bold bg-red mt-4 p-2 rounded-lg"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
-          </div>
+    <div className="overflow-x-hidden">
+      <div className="p-4 ">
+        <div className="pl-[10vw] mt-6 mb-[3vh]">
+          <Navbar />
         </div>
-      )}
+        <div className="absolute top-[135vh] w-[25vw] left-[15vw] flex justify-between">
+          <h1 className="text-red font-bold text-3xl  m">Comments</h1>
+          <button
+            className="px-5 py-2 text-white bg-red  w-[200px] rounded-lg"
+            onClick={() => setPop(true)}
+          >
+            Add comment
+          </button>
+        </div>
 
-      <Car
-        owner={carData.owner}
-        brand={carData.brand}
-        email={carData.email}
-        phone={carData.phone}
-        comments={carData.comments}
-        seats={carData.seats}
-        engineType={carData.engineType}
-        location={carData.location}
-        Buyprice={carData.Buyprice}
-        Rentprice={carData.Rentprice}
-        model={carData.model}
-        year={carData.year}
-        isRent={carData.isRent}
-        images={carData.images}
-        rating={carData.rating}
-        id={carData.id}
-        transmission={carData.transmission}
-        color={carData.color}
-        isBuy={carData.isBuy}
-        engine={carData.engine}
-      />
+        {Pop && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
+            <div className="relative h-[40vh] w-[30vw] p-6 flex flex-col justify-center items-center text-black bg-white shadow-lg rounded-lg">
+              <button
+                className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold"
+                onClick={() => setPop(false)}
+              >
+                &times;
+              </button>
+              <h1 className="text-3xl mb-4 font-bold text-red">Add Comment</h1>
+
+              <Stars
+                totalStars={5}
+                onRatingChange={handleRatingChange}
+                initialRating={rating}
+              />
+
+              <textarea
+                className="w-full h-[50%] p-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 resize-none text-gray-700"
+                placeholder="Write your comment here..."
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+              <button
+                className="text-white font-bold bg-red mt-4 p-2 rounded-lg"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        )}
+
+        <Car
+          owner={carData.owner}
+          brand={carData.brand}
+          email={carData.email}
+          phone={carData.phone}
+          comments={carData.comments}
+          seats={carData.seats}
+          engineType={carData.engineType}
+          location={carData.location}
+          Buyprice={carData.Buyprice}
+          Rentprice={carData.Rentprice}
+          model={carData.model}
+          year={carData.year}
+          isRent={carData.isRent}
+          images={carData.images}
+          rating={carData.rating}
+          id={carData.id}
+          transmission={carData.transmission}
+          color={carData.color}
+          isBuy={carData.isBuy}
+          engine={carData.engine}
+        />
+      </div>
+
+      <Footer />
     </div>
   );
 };
