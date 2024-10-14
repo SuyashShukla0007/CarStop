@@ -38,7 +38,7 @@ const port = 3000;
 
 
 app.use(cors({
-  origin: 'http://localhost:5173', // Replace with your frontend URL
+  origin: 'https://car-stop-dykm.vercel.app/', // Replace with your frontend URL
   credentials: true
   
 }));
