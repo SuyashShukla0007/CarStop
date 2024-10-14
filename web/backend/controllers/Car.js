@@ -259,7 +259,7 @@ else{
     await car.save();
 
     // Respond with the updated car
-    res.status(200).json(car);
+    res.status(200).json(newComment);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
