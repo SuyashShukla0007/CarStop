@@ -266,9 +266,7 @@ else{
 };
 
 
-export const deleteComment=()=>{
-  
-}
+
 
 export const all =async(req,res)=>{
 
@@ -308,3 +306,47 @@ export const myCars = async (req, res) => {
     res.status(500).json({ msg: "Internal server error", error: error.message });
   }
 };
+
+export const editComment=async(req,res)=>{
+  try{
+    const id=req.params.carid
+    const car=Car.findById(id)
+    const {text,postedBy,time,rating}=req.body
+    car.comment=car.comment.filter((comment)=>!(comment.postedBy===postedBy && comment.time===time  && comment.text===text))
+    const newComment = {
+      text,
+      postedBy,
+      time,
+      rating
+    };
+    car.comment.push(newComment)
+   await car.save()
+
+   res.status(200).send(car.comment)
+
+  }
+  catch(error)
+  {
+    res.status(400).json({"error":error})
+  }
+}
+
+export const deleteComment=async(req,res)=>{
+  try{
+    const id=req.params.carid
+  const car=await Car.findById(id)
+  
+const {time,postedBy,text}=req.body
+ car.comments=car.comments.filter((comment)=> !(comment.postedBy===postedBy && comment.time===time && comment.text===text))
+
+   await car.save()
+
+   res.status(200).json({msg:"updated comments"})
+  }
+
+  catch(error)
+  {
+    res.status(400).json({"error":error})
+  }
+
+}
