@@ -253,7 +253,7 @@ else{
     car.comments.push(newComment);
 }
 
-    car?.rating+=rating
+    car.rating=car.rating+rating
 
     // Save the car with the new comment
     await car.save();
