@@ -343,8 +343,7 @@ export const deleteComment=async(req,res)=>{
     const user=await User.findById(userId)
     const userName=user.name
 
-    
-
+console.log(userName)
   const car=await Car.findById(id)
   
 const {time,postedBy,text}=req.body
