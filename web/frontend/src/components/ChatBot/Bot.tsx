@@ -1,4 +1,5 @@
 import { useState,useEffect } from 'react';
+import img2 from '../../assets/176348.jpg'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
@@ -98,7 +99,7 @@ const lastmsg = useRef<HTMLDivElement>(null);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="h-[40vh] sm:h-[70vh] w-[60vw] sm:w-[30vw] rounded-lg shadow-lg bg-white overflow-hidden">
+      <div className="h-[40vh] sm:h-[70vh] w-[60vw] sm:w-[30vw] rounded-lg shadow-lg bg-white overflow-hidden" style={{backgroundImage:`url(${img2})`, backgroundSize:'cover', backgroundPosition:'center'}}>
         <div className="flex items-center bg-red justify-between rounded-t-lg bg-red-600 p-4">
           <h1 className="text-white text-3xl justify-center inset-0 items-center flex font-bold">
             <img src={img} className='h-[4vh]  rounded-full  mr-4' alt="" />
@@ -119,7 +120,7 @@ const lastmsg = useRef<HTMLDivElement>(null);
             </div>
           ))}
           
-          {loading && <div className="text-center">Bot is typing...</div>}
+          {loading && <div className="text-center text-white text-semibold">Bot is typing...</div>}
         </div>
         <form onSubmit={handleSendMessage} className="flex px-4 py-2 bg-white border-t border-gray-300">
           <input
