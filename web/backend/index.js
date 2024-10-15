@@ -39,8 +39,8 @@ const port = 3000;
 
 app.use(cors({
   origin: '*', // Replace with your frontend URL
-  credentials: true
-  
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 
