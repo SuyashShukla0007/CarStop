@@ -40,17 +40,12 @@ const Navbar = ({ act }: any) => {
 
   return (
     <div >
-      <ul className={`ml-0 grid ${show?'grid-cols-7':'grid-cols-6'} gap-0`}>
-        <li>
-          <p id="logo" className="text-4xl">
-            CARHUB
-          </p>
-        </li>
-        <NavLink
+      <ul className={`ml-0 grid ${show?'grid-cols-6':'grid-cols-5'} gap-0`}>
+        <NavLink  id="logo"
           to="/"
-          className={`navi ${act == "home" ? "text-red font-bold" : ""}`}
+          className={`navi ${act == "home" ? "text-red font-bold" : ""} text-4xl`}
         >
-          Home Page
+           CARHUB
         </NavLink>
         <NavLink
           to="/myCars"
