@@ -45,7 +45,7 @@ const CarFeatures = (props: cardata) => {
       {features.map((feature, index) => (
         <div
           key={index}
-          className="bg-white-400 text-sm w-[7vw] mr-2 mb-2 h-[5vh] shadow-sm bg-gray-200 shadow-gray-500 rounded-lg flex items-center justify-between p-2"
+          className="bg-white-400 text-sm w-[7vw] hover:bg-red hover:text-white mr-2 mb-2 h-[5vh] shadow-sm bg-gray-200 shadow-gray-500 rounded-lg flex items-center justify-between p-2"
         >
           <div className="text-sm">
             <img src={feature.icon} alt="" className="w-[20px]" />

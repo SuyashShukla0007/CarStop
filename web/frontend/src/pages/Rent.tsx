@@ -30,7 +30,7 @@ const Rent = () => {
   return (
     <>
       <div className="h-[100vh] overflow-x-hidden">
-        <div className="pt-10 px-[10vw]">
+        <div className="pt-10  px-[10vw] w-[100vw]">
           <Navbar act="rent"></Navbar>
         </div>
 

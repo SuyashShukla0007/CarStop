@@ -62,8 +62,8 @@ const [loading, setLoading] = useState(true);
 
   return (
     <div className="overflow-x-hidden">
-      <div className="p-4 ">
-        <div className="pl-[10vw] mt-6 mb-[3vh]">
+      <div className="p-4 min-h-[180vh] bg-white w-[100vw]">
+        <div className="ml-5 mt-6 mb-[3vh]">
           <Navbar />
         </div>
 
@@ -92,7 +92,7 @@ const [loading, setLoading] = useState(true);
           />
         )}
       </div>
-
+        
       <Footer />
     </div>
   );

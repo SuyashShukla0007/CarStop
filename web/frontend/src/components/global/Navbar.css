@@ -1,10 +1,4 @@
-#head{
 
-  display: grid;
-  grid-template-columns: 180px 180px 180px 180px 180px 180px 180px  ;
-  gap: 10px;
- align-items: center; 
-}
 #logo
 {
   color: #ff0000;

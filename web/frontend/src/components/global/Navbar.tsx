@@ -39,17 +39,24 @@ const Navbar = ({ act }: any) => {
   }, []); // Empty dependency array, runs only once on mount
 
   return (
-    <div >
-      <ul className={`ml-0 grid ${show?'grid-cols-6':'grid-cols-5'} gap-0`}>
-        <NavLink  id="logo"
+    <div>
+      <ul
+        className={`ml-0 grid ${show ? "grid-cols-6 gap-0" : "grid-cols-5 gap-36"} ${act!='home'?"ml-10":"ml-0"}  w-[100%] items-center justify-center`}
+      >
+        <NavLink
+          id="logo"
           to="/"
-          className={`navi ${act == "home" ? "text-red font-bold" : ""} text-4xl`}
+          className={`navi ${
+            act == "home" ? "text-red font-bold" : ""
+          } text-4xl`}
         >
-           CARHUB
+          CARHUB
         </NavLink>
         <NavLink
           to="/myCars"
-          className={`navi ${act == "My Cars" ? "text-red font-bold" : ""}  ${show?'block':'hidden'}`}
+          className={`navi ${act == "My Cars" ? "text-red font-bold" : ""}  ${
+            show ? "block" : "hidden"
+          }`}
         >
           My Cars
         </NavLink>

@@ -131,6 +131,7 @@ const Comments = () => {
   if (!comments?.length) {
     return (
       <>
+      
       <div className="absolute top-[135vh] w-[25vw] left-[15vw] flex justify-between">
         <h1 className="text-red font-bold text-3xl">Comments</h1>
         <button
@@ -140,6 +141,12 @@ const Comments = () => {
           Add comment
         </button>
       </div>
+
+      <div className="text-2xl text-gray-600 font-semibold absolute mt-[10vh] ml-[15vw]">
+        No comments yet
+      </div>
+      
+     
 
       {Pop && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">

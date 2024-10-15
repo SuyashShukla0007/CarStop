@@ -45,7 +45,7 @@ const Card = (props: cardata) => {
           <div id="description">
             <div id="rating">
               <div className="flex items-center gap-2 mb-2">
-                <img src={star} height={18} width={18} alt="" /> {(props.rating)/props.comments?.length}
+                <img src={star} height={18} width={18} alt="" /> {(props.rating)/props.comments?.length  | 0}
               </div>
             </div>
             <div id="carLocation" className="mb-2">{props.location}</div>
