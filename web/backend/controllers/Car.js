@@ -346,7 +346,7 @@ export const deleteComment=async(req,res)=>{
 console.log(userName)
   const car=await Car.findById(id)
   
-const {time,postedBy,text}=req.body
+const {time,postedBy,text,rating}=req.body
 
 
 if(postedBy!=userName)
@@ -354,6 +354,9 @@ if(postedBy!=userName)
 res.send(400).send("lol")
 }
  car.comments=car.comments.filter((comment)=> !(comment.postedBy===postedBy && comment.time===time && comment.text===text))
+
+  car.rating=car.rating-rating
+
 
    await car.save()
 
