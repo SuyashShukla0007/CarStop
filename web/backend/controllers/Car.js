@@ -245,7 +245,8 @@ console.log(car)
 // comments can be null initially
 
     if(car.comments==null){
-      car.comments=[{text:text, postedBy:postedBy, time:time}]
+      car.comments=[{text:text, postedBy:postedBy, time:time,rating:rating
+      }]
     }
 
 else{
