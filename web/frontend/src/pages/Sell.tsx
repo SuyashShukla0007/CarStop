@@ -73,7 +73,7 @@ export default function SellForm() {
       }
 
       const response = await axios.post(
-        "https://carstop.vercel.app/car/sell",
+        "https://carstop.vercel.ap/car/sell",
         formData,
         {
           headers: {
@@ -101,8 +101,13 @@ export default function SellForm() {
       className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8"
       style={{ backgroundImage: `url(${img})`, backgroundPosition: "center" }}
     >
-      <div className="ml-10 fixed">
-        <House color="red" size={50} onClick={() => navi("/")} />
+      <div className="ml-[80%] mt-2 md:ml-10 md:mt-0 fixed z-50 ">
+        <House
+          color="red"
+          className="z-50"
+          size={50}
+          onClick={() => navi("/")}
+        />
       </div>
 
       <div className="max-w-3xl mx-auto bg-white opacity-85 rounded-lg shadow-md overflow-hidden">

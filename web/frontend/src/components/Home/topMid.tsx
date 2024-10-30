@@ -16,7 +16,7 @@ interface CarData {
       postedBy: string;
       time: string;
     }
-  ] ;
+  ];
   rating: number;
   isRent: boolean;
   isBuy: boolean;
@@ -38,7 +38,7 @@ const TopMid = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res = await axios.get("https://carstop.vercel.app/car/all");
+        const res = await axios.get("https://carstop.vercel.ap/car/all");
         setCarData(res.data);
         console.log(res.data);
       } catch (error) {
@@ -50,34 +50,35 @@ const TopMid = () => {
 
   return (
     <div className="card-list">
-      {carData.map((data, index) => (
-        (
-          data.comments &&
-        <Card
-          key={index}
-          id={data._id}
-          images={data.images}
-          owner={data.owner}
-          comments={data.comments}
-          brand={data.brand}
-          seats={data.seats}
-          engineType={data.engineType}
-          // milage={data.milage}
-          location={data.location}
-          Buyprice={data.Buyprice}
-          Rentprice={data.Rentprice}
-          color={data.color}
-          engine={data.engine}
-          transmission={data.transmission}
-          // carNo={data.carNo}
-          year={data.year}
-          // description={data.description}
-          model={data.model}
-          isRent={data.isRent}
-          isBuy={data.isBuy}
-          rating={data.rating}
-        />)
-      ))}
+      {carData.map(
+        (data, index) =>
+          data.comments && (
+            <Card
+              key={index}
+              id={data._id}
+              images={data.images}
+              owner={data.owner}
+              comments={data.comments}
+              brand={data.brand}
+              seats={data.seats}
+              engineType={data.engineType}
+              // milage={data.milage}
+              location={data.location}
+              Buyprice={data.Buyprice}
+              Rentprice={data.Rentprice}
+              color={data.color}
+              engine={data.engine}
+              transmission={data.transmission}
+              // carNo={data.carNo}
+              year={data.year}
+              // description={data.description}
+              model={data.model}
+              isRent={data.isRent}
+              isBuy={data.isBuy}
+              rating={data.rating}
+            />
+          )
+      )}
     </div>
   );
 };

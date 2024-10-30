@@ -14,8 +14,6 @@ type CommentType = {
   rating: number;
 };
 
-
-
 const Comments = () => {
   const [comments, setComments] = useState<CommentType[] | null>(null);
   const { id } = useParams();
@@ -25,19 +23,16 @@ const Comments = () => {
   const [currentRating, setCurrentRating] = useState<number>(0);
   const nav = useNavigate();
 
-
-
-  useEffect(()=>{
-    const fetch=async()=>{
-      const res=await axios.get(`https://carstop.vercel.app/car/buy/${ID}`)
-      setComments(res.data.car.comments)
-    }
-    fetch()
-  },[])
-
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await axios.get(`https://carstop.vercel.ap/car/buy/${ID}`);
+      setComments(res.data.car.comments);
+    };
+    fetch();
+  }, []);
 
   const handleEdit = () => {
-    // Logic for editing a comment 
+    // Logic for editing a comment
   };
 
   const handleSubmit = async () => {
@@ -56,13 +51,13 @@ const Comments = () => {
         return;
       }
 
-      const user = await axios.get("https://carstop.vercel.app/user/User", {
+      const user = await axios.get("https://carstop.vercel.ap/user/User", {
         headers: { Authorization: token },
       });
 
       const postedBy = user.data.name;
       const res = await axios.post(
-        `https://carstop.vercel.app/car/comment/${ID}`,
+        `https://carstop.vercel.ap/car/comment/${ID}`,
         {
           text: text.trim(),
           postedBy,
@@ -76,15 +71,16 @@ const Comments = () => {
       );
 
       setText("");
-      console.log(res.data)
-      setComments((prevComments) => (prevComments ? [...prevComments, res.data] : [res.data]));
+      console.log(res.data);
+      setComments((prevComments) =>
+        prevComments ? [...prevComments, res.data] : [res.data]
+      );
     } catch (err) {
       console.error("Error posting comment:", err);
     }
   };
 
   const handleDelete = async (comm: CommentType) => {
-
     try {
       if (!ID) {
         console.error("Invalid ID");
@@ -99,7 +95,7 @@ const Comments = () => {
       }
 
       const response = await axios.post(
-        `https://carstop.vercel.app/car/deleteComment/${ID}`,
+        `https://carstop.vercel.ap/car/deleteComment/${ID}`,
         comm,
         { headers: { Authorization: token } }
       );
@@ -127,63 +123,58 @@ const Comments = () => {
     setCurrentRating(newRating);
     console.log("Rating updated to:", newRating);
   };
-  
+
   if (!comments?.length) {
     return (
       <>
-      
-      <div className="absolute top-[135vh] w-[25vw] left-[15vw] flex justify-between">
-        <h1 className="text-red font-bold text-3xl">Comments</h1>
-        <button
-          className="px-5 py-2 text-white bg-red w-[200px] rounded-lg"
-          onClick={() => setPop(true)}
-        >
-          Add comment
-        </button>
-      </div>
-
-      <div className="text-2xl text-gray-600 font-semibold absolute mt-[10vh] ml-[15vw]">
-        No comments yet
-      </div>
-      
-     
-
-      {Pop && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
-          <div className="relative h-[40vh] w-[30vw] p-6 flex flex-col justify-center items-center text-black bg-white shadow-lg rounded-lg">
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold"
-              onClick={() => setPop(false)}
-            >
-              &times;
-            </button>
-            <h1 className="text-3xl mb-4 font-bold text-red">Add Comment</h1>
-
-            <Stars2
-              onRatingChange={handleRatingChange}
-              initialRating={currentRating}
-            />
-
-            <textarea
-              className="w-full h-[50%] p-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 resize-none text-gray-700"
-              placeholder="Write your comment here..."
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-            <button
-              className="text-white font-bold bg-red mt-4 p-2 rounded-lg"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
-          </div>
+        <div className="absolute top-[135vh] w-[25vw] left-[15vw] flex justify-between">
+          <h1 className="text-red font-bold text-3xl">Comments</h1>
+          <button
+            className="px-5 py-2 text-white bg-red w-[200px] rounded-lg"
+            onClick={() => setPop(true)}
+          >
+            Add comment
+          </button>
         </div>
-      )}
+
+        <div className="text-2xl text-gray-600 font-semibold absolute mt-[10vh] ml-[15vw]">
+          No comments yet
+        </div>
+
+        {Pop && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
+            <div className="relative h-[40vh] w-[30vw] p-6 flex flex-col justify-center items-center text-black bg-white shadow-lg rounded-lg">
+              <button
+                className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold"
+                onClick={() => setPop(false)}
+              >
+                &times;
+              </button>
+              <h1 className="text-3xl mb-4 font-bold text-red">Add Comment</h1>
+
+              <Stars2
+                onRatingChange={handleRatingChange}
+                initialRating={currentRating}
+              />
+
+              <textarea
+                className="w-full h-[50%] p-2 border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 resize-none text-gray-700"
+                placeholder="Write your comment here..."
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+              <button
+                className="text-white font-bold bg-red mt-4 p-2 rounded-lg"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        )}
       </>
-      
     );
   }
-
 
   return (
     <>

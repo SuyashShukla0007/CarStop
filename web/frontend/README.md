@@ -66,7 +66,7 @@ Welcome to the Car Rental Website repository! This project is a comprehensive ca
    npm run dev
    ```
 
-   The application should now be running on `http://localhost:3000`.
+   The application should now be running on `https://carstop.vercel.ap`.
 
 ## Usage
 

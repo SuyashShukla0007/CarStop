@@ -12,7 +12,7 @@ const Buy = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await axios.get("https://carstop.vercel.app/car/buyAll");
+        const res = await axios.get("https://carstop.vercel.ap/car/buyAll");
         setCarOnRent(res.data.cars);
         console.log(res.data.cars);
         setLoading(false);
@@ -28,7 +28,7 @@ const Buy = () => {
 
   return (
     <div className="overflow-x-hidden">
-      <div className="pt-10 px-[10vw]">
+      <div className="pt-10 ml-[10vw] pr-[2vw]">
         <Navbar act="buy"></Navbar>
       </div>
 
@@ -57,7 +57,8 @@ const Buy = () => {
               isRent={data.isRent}
               isBuy={data.isBuy}
               rating={data.rating}
-               comments={data.comments}            />
+              comments={data.comments}
+            />
           ))
         ) : (
           <p className="text-red text-3xl w-[30vw] h-[90vh] font-bold">

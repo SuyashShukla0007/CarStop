@@ -36,16 +36,15 @@ interface CarDataType {
 }
 
 const Cars = () => {
-
   const { id } = useParams<{ id: string }>();
   const [carData, setCarData] = useState<CarDataType | null>(null);
-const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetch = async () => {
       try {
         const ID = id?.split("=")[1];
         const res = await axios.get<{ car: CarDataType }>(
-          `https://carstop.vercel.app/car/buy/${ID}`
+          `https://carstop.vercel.ap/car/buy/${ID}`
         );
         setCarData(res.data.car);
         console.log(res.data.car);
@@ -92,7 +91,7 @@ const [loading, setLoading] = useState(true);
           />
         )}
       </div>
-        
+
       <Footer />
     </div>
   );

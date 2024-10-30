@@ -41,24 +41,16 @@ function Slider() {
   ];
 
   return (
-    <div className="logo-strip">
-      <div className="logo-strip-inner">
-        
-      {logos.map((logo, index) => (
-  <img
-    key={index + logos.length}
-    src={logo}
-    className="logo"
-    alt={`logo-${index}`}
-    style={{
-      height: "50px",
-      paddingRight: "15px",
-      paddingLeft: "15px",
-     // Inverts colors
-    }}
-  />
-))}
-
+    <div className="w-full overflow-hidden bg-white flex items-center mt-16 logo-strip">
+      <div className="logo-strip-inner flex">
+        {logos.map((logo, index) => (
+          <img
+            key={index}
+            src={logo}
+            className="h-9 md:h-12 flex-shrink-0 px-4 logo"
+            alt={`logo-${index}`}
+          />
+        ))}
       </div>
     </div>
   );

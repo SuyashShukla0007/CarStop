@@ -44,11 +44,11 @@ type CarCollection = {
 export default function MyCars() {
   const [collection, setCollection] = useState<CarCollection | null>(null);
   const [Loading, setLoading] = useState(true);
-const navi=useNavigate()
+  const navi = useNavigate();
   useEffect(() => {
     const fetch = async () => {
       const token = Cookies.get("token");
-      const res = await axios.get("https://carstop.vercel.app/car/mycars", {
+      const res = await axios.get("https://carstop.vercel.ap/car/mycars", {
         headers: { Authorization: token },
       });
       setCollection(res.data);
@@ -62,17 +62,17 @@ const navi=useNavigate()
     return (
       <>
         <div className="bg-black absolute pt-[5vh] pl-[5vw]">
-          <Home color="red" size={60} onClick={() => navi('/')} />
+          <Home color="red" size={60} onClick={() => navi("/")} />
         </div>
         <div className="flex flex-col justify-center items-center min-h-screen bg-black">
-          <h1 className="text-red font-bold mb-4 text-center ">No Cars Found </h1>
+          <h1 className="text-red font-bold mb-4 text-center ">
+            No Cars Found{" "}
+          </h1>
           <div className="animate-spin  absolute rounded-full h-32 w-32 border-t-4 border-blue-500"></div>
-         
         </div>
       </>
     );
   }
-  
 
   if (collection === null || collection.length === 0) {
     return (
@@ -81,7 +81,9 @@ const navi=useNavigate()
           <Navbar act="My Cars"></Navbar>
         </div>
         <div className="flex justify-center items-center h-[20vh]">
-          <div className="text-red text-3xl w-[60vw] font-bold">Add cars to see</div>
+          <div className="text-red text-3xl w-[60vw] font-bold">
+            Add cars to see
+          </div>
         </div>
       </>
     );

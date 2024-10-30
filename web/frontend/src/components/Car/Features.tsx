@@ -60,11 +60,11 @@ const CarFeatures = (props: cardata) => {
 
   return (
     <div className="container mx-auto p-6">
-      <div className="grid grid-cols-1 ml-[10vw] w-[40vw] sm:grid-cols-2 lg:grid-cols-3">
+      <div className=" md:ml-[10vw] w-[80vw] md:w-[40vw] grid grid-cols-3 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="bg-white-400 w-[12vw] mb-2 h-[8vh] shadow-sm shadow-gray-500 rounded-lg flex items-center justify-between p-4"
+            className="bg-white-400 w-[25vw]  md:w-[12vw] mb-2 h-[8vh] shadow-sm shadow-gray-500 rounded-lg flex items-center justify-between p-4"
           >
             <div className="text-sm font-medium">{feature.name}</div>
             <div className="text-2xl">
