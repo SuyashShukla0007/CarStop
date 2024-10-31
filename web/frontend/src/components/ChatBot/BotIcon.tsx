@@ -26,7 +26,7 @@ const BotIcon = () => {
     <>
       {!isBotOpen ? (
         <div
-          className="cursor-pointer fixed bottom-5 right-5 z-50"
+          className="cursor-pointer fixed bottom-[15vh] md:bottom-5 right-5 z-50"
           onClick={handleBotPopUp}
         >
           <button
