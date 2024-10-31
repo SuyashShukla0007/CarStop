@@ -43,7 +43,7 @@ const Navbar = ({ act }: any) => {
     <div>
       <ul
         className={`grid  items-center justify-center ${
-          show ? "grid-cols-6 w-[90vw]" : "grid-cols-5 w-full"
+          show ? "grid-cols-6 w-[95vw]" : "grid-cols-5 w-full"
         } md:ml-10`}
       >
         <NavLink
@@ -59,7 +59,7 @@ const Navbar = ({ act }: any) => {
           id="home-icon"
           to="/"
           className={`navi md:hidden  pl-6  ${
-            act === "home" ? "hidden" : "block"
+            act === "home" ? "block" : "block"
           }`}
         >
           <Home color="red" size={24} />
@@ -99,8 +99,8 @@ const Navbar = ({ act }: any) => {
         {!show ? (
           <li>
             <NavLink to="/signUp">
-              <button id="sign" className="text-xs">
-                Sign In
+              <button id="sign" className="text-xs md:text-lg">
+                Sign
               </button>
             </NavLink>
           </li>

@@ -19,7 +19,7 @@ const TopH = () => {
 
   return (
     <div className="mt-0 flex flex-col h-[23vh] md:h-full md:ml-6 sm:ml-0">
-      <div className={`mt-4 md:mt-20 ml-10 md:ml-[3vw] mb-10 md:mb-28 ${renderStep >= 1 ? 'slide-in-top' : ''}`}>
+      <div className={`mt-4 md:mt-20 ml-[2vw] md:ml-[3vw] mb-10 md:mb-28 ${renderStep >= 1 ? 'slide-in-top' : ''}`}>
         {renderStep >= 1 && <Navbar act="home" />}
       </div>
 
