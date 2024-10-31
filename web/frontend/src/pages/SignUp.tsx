@@ -49,7 +49,7 @@ const SignUp = () => {
 
     try {
       const res = await axios.post(
-        "https://carstop.vercel.ap/user/register",
+        "https://carstop.vercel.app/user/register",
         formValues
       );
 

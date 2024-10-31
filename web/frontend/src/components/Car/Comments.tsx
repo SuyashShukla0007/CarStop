@@ -25,7 +25,7 @@ const Comments = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const res = await axios.get(`https://carstop.vercel.ap/car/buy/${ID}`);
+      const res = await axios.get(`https://carstop.vercel.app/car/buy/${ID}`);
       setComments(res.data.car.comments);
     };
     fetch();
@@ -51,13 +51,13 @@ const Comments = () => {
         return;
       }
 
-      const user = await axios.get("https://carstop.vercel.ap/user/User", {
+      const user = await axios.get("https://carstop.vercel.app/user/User", {
         headers: { Authorization: token },
       });
 
       const postedBy = user.data.name;
       const res = await axios.post(
-        `https://carstop.vercel.ap/car/comment/${ID}`,
+        `https://carstop.vercel.app/car/comment/${ID}`,
         {
           text: text.trim(),
           postedBy,
@@ -95,7 +95,7 @@ const Comments = () => {
       }
 
       const response = await axios.post(
-        `https://carstop.vercel.ap/car/deleteComment/${ID}`,
+        `https://carstop.vercel.app/car/deleteComment/${ID}`,
         comm,
         { headers: { Authorization: token } }
       );

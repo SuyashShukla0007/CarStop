@@ -73,7 +73,7 @@ export default function SellForm() {
       }
 
       const response = await axios.post(
-        "https://carstop.vercel.ap/car/sell",
+        "https://carstop.vercel.app/car/sell",
         formData,
         {
           headers: {
