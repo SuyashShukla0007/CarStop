@@ -98,10 +98,10 @@ export default function SellForm() {
 
   return (
     <div
-      className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8"
+      className="h-[200vh] md:h-auto md:min-h-screen  py-12 px-4 sm:px-6 lg:px-8"
       style={{ backgroundImage: `url(${img})`, backgroundPosition: "center" }}
     >
-      <div className="ml-[80%] mt-2 md:ml-10 md:mt-0 fixed z-50 ">
+      <div className="ml-[80%] absolute mt-2   md:ml-10 md:mt-0  z-50 ">
         <House
           color="red"
           className="z-50"

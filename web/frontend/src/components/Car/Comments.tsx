@@ -127,25 +127,25 @@ const Comments = () => {
   if (!comments?.length) {
     return (
       <>
-        <div className="absolute top-[135vh] w-[25vw] left-[15vw] flex justify-between">
+        <div className="md:absolute top-[135vh] w-[80vw]  md:w-[25vw] left-[15vw] flex justify-between">
           <h1 className="text-red font-bold text-3xl">Comments</h1>
           <button
-            className="px-5 py-2 text-white bg-red w-[200px] rounded-lg"
+            className="px-5 ml-10 py-2 text-white bg-red w-[200px] rounded-lg"
             onClick={() => setPop(true)}
           >
             Add comment
           </button>
         </div>
 
-        <div className="text-2xl text-gray-600 font-semibold absolute mt-[10vh] ml-[15vw]">
+        <div className="text-2xl text-gray-600 font-semibold md:absolute mt-[10vh] ml-[15vw]">
           No comments yet
         </div>
 
         {Pop && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
-            <div className="relative h-[40vh] w-[30vw] p-6 flex flex-col justify-center items-center text-black bg-white shadow-lg rounded-lg">
+            <div className="relative h-[40vh] w-[80vw] md:w-[30vw] p-6 flex flex-col justify-center items-center text-black bg-white shadow-lg rounded-lg">
               <button
-                className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold"
+                className="md:absolute top-3 md:right-3 absolute right-0  text-gray-500 hover:text-gray-800 text-3xl font-bold"
                 onClick={() => setPop(false)}
               >
                 &times;
@@ -178,10 +178,10 @@ const Comments = () => {
 
   return (
     <>
-      <div className="absolute top-[135vh] w-[25vw] left-[15vw] flex justify-between">
-        <h1 className="text-red font-bold text-3xl">Comments</h1>
+      <div className="md:absolute top-[135vh] w-[80vw] md:w-[25vw] left-[15vw] flex justify-between">
+        <h1 className="text-red font-bold text-3xl ">Comments</h1>
         <button
-          className="px-5 py-2 text-white bg-red w-[200px] rounded-lg"
+          className="px-5 ml-10 py-2 text-white bg-red w-[200px] rounded-lg"
           onClick={() => setPop(true)}
         >
           Add comment
@@ -190,9 +190,9 @@ const Comments = () => {
 
       {Pop && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
-          <div className="relative h-[40vh] w-[30vw] p-6 flex flex-col justify-center items-center text-black bg-white shadow-lg rounded-lg">
+          <div className="relative h-[40vh] w-[80vw] md:w-[30vw] p-6 flex flex-col justify-center items-center text-black bg-white shadow-lg rounded-lg">
             <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold"
+              className="absolute md:top-3 top-1 md:right-3 right-3 text-red hover:text-gray-800 text-3xl font-bold"
               onClick={() => setPop(false)}
             >
               &times;
@@ -220,19 +220,19 @@ const Comments = () => {
         </div>
       )}
 
-      <div className="max-h-[40vh] scrollable mt-[10vh] overflow-y-auto w-[45vw] mb-10">
+      <div className="max-h-[40vh] scrollable mt-[10vh] overflow-y-auto w-[100vw] md:w-[45vw] mb-10">
         {reversedComments.map((com, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-start w-[30vw] ml-[12vw] border-y-2 mb-6 border-x-2 rounded-lg border-gray-300"
+            className="flex flex-col items-start w-[80vw] ml-[3vw] md:w-[30vw] md:ml-[12vw] border-y-2 mb-6 border-x-2 rounded-lg border-gray-300"
           >
             <div className="text-lg font-semibold border-b-2 border-gray-300 flex justify-between w-full p-4 text-start">
               <div className="flex items-center">
-                <p className="mr-2">{com.postedBy}</p>
+                <p className="mr-2 text-sm md:text-lg">{com.postedBy}</p>
                 <Stars stars={com.rating} />
               </div>
               <div className="flex items-center">
-                <p className="mr-2">{com.time}</p>
+                <p className="mr-2 text-sm md:text-lg">{com.time}</p>
                 <Pencil
                   className="mt-1 cursor-pointer"
                   size={14}

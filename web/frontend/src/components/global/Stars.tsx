@@ -9,9 +9,9 @@ export  const Stars = ({stars}:stars) => {
     return 
 
   return (
-    <div className='flex'>
+    <div className='flex '>
        {[...Array(stars)].map((_, idx) => (
-          <img key={idx} src={Star} alt="" height={20} width={20} />
+          <img key={idx} src={Star} alt="" className='md:h-[20px] md:w-[20px] h-3 ' />
         ))}
     </div>
   )

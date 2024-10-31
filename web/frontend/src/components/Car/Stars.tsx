@@ -28,6 +28,7 @@ export const Stars2 = ({  onRatingChange, initialRating = 4 }: StarsProps) => {
             key={`star-${idx}`}
             onClick={() => handleClick(idx+1)}
             size={15}
+            fill={idx<rating?'yellow':'white'}
             color={idx < rating ? 'yellow' : 'black'}
             role="button"
             tabIndex={0}

@@ -62,7 +62,7 @@ const Cars = () => {
   return (
     <div className="overflow-x-hidden">
       <div className="p-4 min-h-[180vh] bg-white w-[100vw]">
-        <div className="ml-5 mt-6 mb-[3vh]">
+        <div className="md:ml-5 mt-6 mb-[3vh]">
           <Navbar />
         </div>
 

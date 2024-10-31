@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
-import "./Navbar.css";
 import { Home } from "lucide-react";
+import "./Navbar.css";
 
 const Navbar = ({ act }: any) => {
   const [show, setShow] = useState<boolean>(false);
@@ -17,7 +17,7 @@ const Navbar = ({ act }: any) => {
     const token = Cookies.get("token");
 
     if (!token) {
-      setShow(false); // No token, show sign-in button
+      setShow(false);
       return;
     }
     const fetchUser = async () => {
@@ -29,98 +29,91 @@ const Navbar = ({ act }: any) => {
           }
         );
         console.log("Response data:", response.data);
-        setShow(true); // Show user info
+        setShow(true);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setShow(true); // Hide user info and show sign-in button on error
+        setShow(false);
       }
     };
 
     fetchUser();
-  }, []); // Empty dependency array, runs only once on mount
+  }, []);
 
   return (
-    <>
-      <NavLink
-        id="logo"
-        to="/"
-        className={`navi md:hidden
-            absolute left-1 top-10 
-            overflow-hidden
-            ${
-              act == "home" ? "text-red font-bold hidden" : "block"
-            } md:text-4xl`}
+    <div>
+      <ul
+        className={`grid  items-center justify-center ${
+          show ? "grid-cols-6 w-[90vw]" : "grid-cols-5 w-full"
+        } md:ml-10`}
       >
-        <Home color="red" />
-      </NavLink>
-      <div>
-        <ul
-          className={`ml-0 grid ${
-            show ? "grid-cols-6 gap-0 " : "grid-cols-5 md:gap-36"
-          } ${
-            act != "home" ? "md:ml-10 ml-0" : "ml-0"
-          } w-[100%]  md:w-[100%] items-center justify-center`}
+        <NavLink
+          id="logo"
+          to="/"
+          className={`navi hidden md:block text-2xl md:text-4xl ${
+            act === "home" ? "text-red font-bold" : ""
+          }`}
         >
-          <NavLink
-            id="logo"
-            to="/"
-            className={`navi  
-            ${show ? "hidden md:block" : "block"}
-            ${act == "home" ? "text-red font-bold" : ""} md:text-4xl`}
+          CARSTOP
+        </NavLink>
+        <NavLink
+          id="home-icon"
+          to="/"
+          className={`navi md:hidden  pl-6  ${
+            act === "home" ? "hidden" : "block"
+          }`}
+        >
+          <Home color="red" size={24} />
+        </NavLink>
+        <NavLink
+          to="/myCars"
+          className={`navi ${act === "My Cars" ? "text-red font-bold" : ""} ${
+            show ? "block" : "hidden"
+          } text-sm md:text-xl`}
+        >
+          My Cars
+        </NavLink>
+        <NavLink
+          to="/rent"
+          className={`navi ${
+            act === "rent" ? "text-red font-bold" : ""
+          } text-sm md:text-xl`}
+        >
+          Rent Car
+        </NavLink>
+        <NavLink
+          to="/sell"
+          className={`navi ${
+            act === "sell" ? "text-red font-bold" : ""
+          } text-sm md:text-xl`}
+        >
+          Sell Car
+        </NavLink>
+        <NavLink
+          to="/buy"
+          className={`navi ${
+            act === "buy" ? "text-red font-bold" : ""
+          } text-sm md:text-xl`}
+        >
+          Buy Car
+        </NavLink>
+        {!show ? (
+          <li>
+            <NavLink to="/signUp">
+              <button id="sign" className="text-xs">
+                Sign In
+              </button>
+            </NavLink>
+          </li>
+        ) : (
+          <h1
+            className="text-sm w-[15vw] py-1 md:text-lg bg-red md:px-3 md:py-2 cursor-pointer md:w-24 md:w-30 text-center rounded font-bold"
+            onClick={handleLogout}
           >
-            CARSTOP
-          </NavLink>
-          <NavLink
-            to="/myCars"
-            className={`navi ${
-              act == "My Cars" ? "text-red font-bold" : ""
-            }text-sm md:text-xl  ${show ? "block" : "hidden"}`}
-          >
-            My Cars
-          </NavLink>
-          <NavLink
-            to="/rent"
-            className={`navi ${
-              act == "rent" ? "text-red font-bold" : ""
-            } text-sm md:text-xl`}
-          >
-            Rent Car
-          </NavLink>
-          <NavLink
-            to="/sell"
-            className={`navi ${
-              act == "sell" ? "text-red font-bold" : ""
-            } text-sm md:text-xl`}
-          >
-            Sell Car
-          </NavLink>
-          <NavLink
-            to="/buy"
-            className={`navi ${
-              act == "buy" ? "text-red  font-bold" : ""
-            } text-sm md:text-xl`}
-          >
-            Buy Car
-          </NavLink>
-          {!show ? (
-            <li>
-              <NavLink to="/signUp">
-                <button id="sign" className="text-xs">
-                  Sign In
-                </button>
-              </NavLink>
-            </li>
-          ) : (
-            <h1
-              className=" text-sm py-1 md:text-lg bg-red md:px-3 md:py-2 cursor-pointer w-[100px] md:w-[120px] text-center rounded font-bold"
-              onClick={handleLogout}
-            >
-              Logout
-            </h1>
-          )}
-        </ul>
-      </div>
-    </>
+            Logout
+          </h1>
+        )}
+      </ul>
+    </div>
   );
 };
 

@@ -28,7 +28,7 @@ const Buy = () => {
 
   return (
     <div className="overflow-x-hidden">
-      <div className="pt-10 ml-[10vw] pr-[2vw]">
+      <div className="pt-10 md:ml-[10vw] pr-[2vw]">
         <Navbar act="buy"></Navbar>
       </div>
 
