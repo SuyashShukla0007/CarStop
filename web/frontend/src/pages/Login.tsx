@@ -87,6 +87,7 @@ export function Login() {
               Login
             </button>
           </form>
+          <a href="/signup" className="text-sm text-white">Dont't have a account,click here to sign up</a>
         </div>
       </div>
     </div>

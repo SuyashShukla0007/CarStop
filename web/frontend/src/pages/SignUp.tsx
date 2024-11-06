@@ -1,8 +1,8 @@
 import img1 from "../assets/aston.jpeg";
 import Cookies from "js-cookie";
-import img2 from "../assets/mclaren.jpg";
+// import img2 from "../assets/mclaren.jpg";
 import { useNavigate } from "react-router-dom";
-import img4 from "../assets/gtr.jpeg";
+// import img4 from "../assets/gtr.jpeg";
 // @ts-ignore
 import Loading from "../components/global/Loading";
 
@@ -20,7 +20,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
-  const images = [img1, img2, img4];
+  const images = [img1];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
