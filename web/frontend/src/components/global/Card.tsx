@@ -33,7 +33,7 @@ interface CardData {
 const Card = (props: CardData) => {
   return (
     <NavLink to={`/car/id=${props.id}`}>
-      <div className="w-[230px] md:w-[330px] border border-gray-300 rounded-2xl overflow-hidden h-[250px] md:h-[440px] transition-transform duration-300 shadow-md hover:shadow-lg hover:transform hover:-translate-y-1">
+      <div className="w-[260px] md:w-[330px] border border-gray-300 rounded-2xl overflow-hidden h-[250px] md:h-[440px] transition-transform duration-300 shadow-md hover:shadow-lg hover:transform hover:-translate-y-1">
         
         <div className="w-full h-[120px] md:h-[180px] overflow-hidden">
           <img src={props.images[0]} alt={props.model} className="w-full h-full object-cover" />
