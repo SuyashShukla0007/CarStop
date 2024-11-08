@@ -16,7 +16,7 @@ export function Login() {
     const body: any = { email, password };
     try {
       const res = await axios.post(
-        "https://carstop.vercel.app/user/login",
+        "https://carstop.vercel.appuser/login",
         body
       );
       if (res) {
@@ -87,7 +87,9 @@ export function Login() {
               Login
             </button>
           </form>
-          <a href="/signup" className="text-sm text-white">Dont't have a account,click here to sign up</a>
+          <a href="/signup" className="text-sm text-white">
+            Dont't have a account,click here to sign up
+          </a>
         </div>
       </div>
     </div>

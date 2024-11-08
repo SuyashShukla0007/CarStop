@@ -15,7 +15,7 @@ const SignUp = () => {
     phone: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -50,7 +50,7 @@ const SignUp = () => {
 
     try {
       const res = await axios.post(
-        "https://carstop.vercel.app/user/register",
+        "https://carstop.vercel.appuser/register",
         formValues
       );
 
@@ -89,7 +89,8 @@ const SignUp = () => {
             Get Your Free Account Now.
           </h1>
           <p className="text-gray-400 text-xl mb-8 font-serif text-center md:text-left">
-            Let’s get you all set up so you can verify your personal account and begin setting up your profile.
+            Let’s get you all set up so you can verify your personal account and
+            begin setting up your profile.
           </p>
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <div className="flex flex-col md:flex-row gap-4">

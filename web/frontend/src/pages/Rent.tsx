@@ -13,7 +13,7 @@ const Rent = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await axios.get("https://carstop.vercel.app/car/rentAll");
+        const res = await axios.get("https://carstop.vercel.appcar/rentAll");
         setCarOnRent(res.data.cars);
         console.log(res.data.cars);
         setLoading(false);

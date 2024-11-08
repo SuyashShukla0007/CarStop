@@ -23,7 +23,7 @@ const Navbar = ({ act }: any) => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "https://carstop.vercel.app/user/User",
+          "https://carstop.vercel.appuser/User",
           {
             headers: { Authorization: token },
           }
