@@ -48,7 +48,7 @@ export default function MyCars() {
   useEffect(() => {
     const fetch = async () => {
       const token = Cookies.get("token");
-      const res = await axios.get("https://carstop.vercel.appcar/mycars", {
+      const res = await axios.get("https://carstop.vercel.app/car/mycars", {
         headers: { Authorization: token },
       });
       setCollection(res.data);

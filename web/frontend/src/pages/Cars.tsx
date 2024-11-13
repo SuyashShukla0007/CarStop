@@ -44,7 +44,7 @@ const Cars = () => {
       try {
         const ID = id?.split("=")[1];
         const res = await axios.get<{ car: CarDataType }>(
-          `https://carstop.vercel.appcar/buy/${ID}`
+          `https://carstop.vercel.app/car/buy/${ID}`
         );
         setCarData(res.data.car);
         console.log(res.data.car);

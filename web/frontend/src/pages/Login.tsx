@@ -16,7 +16,7 @@ export function Login() {
     const body: any = { email, password };
     try {
       const res = await axios.post(
-        "https://carstop.vercel.appuser/login",
+        "https://carstop.vercel.app/user/login",
         body
       );
       if (res) {
